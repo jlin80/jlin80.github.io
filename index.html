@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jin Heng Lin Huang // Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark';
+  </script>
+</head>
+<body>
+
+<div id="sweep"></div>
+<div id="glitch-overlay"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">JHL.SYS</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero"       data-i18n="nav.home">HOME</a></li>
+    <li><a href="#about"      data-i18n="nav.about">ABOUT</a></li>
+    <li><a href="#experience" data-i18n="nav.exp">EXP</a></li>
+    <li><a href="#education"  data-i18n="nav.edu">EDU</a></li>
+    <li><a href="#certs"      data-i18n="nav.certs">CERTS</a></li>
+    <li><a href="#projects"   data-i18n="nav.proj">PROJ</a></li>
+    <li><a href="#skills"     data-i18n="nav.skills">SKILLS</a></li>
+    <li><a href="#contact"    data-i18n="nav.contact">CONTACT</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-clock" id="clock">00:00:00</span>
+    <button id="lang-btn">EN / ES</button>
+    <button id="theme-btn">◐ MODE</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="ascii-rain"></div>
+  <div class="hero-frame">
+    <div class="crn tl"></div><div class="crn tr"></div>
+    <div class="crn bl"></div><div class="crn br"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-sys" data-i18n="hero.sys">// SYSTEM BOOT — USER PROFILE LOADED //</div>
+    <h1 class="hero-name glitch" data-text="JIN HENG LIN HUANG">JIN HENG LIN HUANG</h1>
+    <div class="hero-sub"><span id="typer"></span><span class="blink"></span></div>
+    <div class="hero-flags">
+      <a class="flag" href="mailto:jin.lin.h18@gmail.com">email=jin.lin.h18@gmail.com</a>
+      <a class="flag" href="tel:+50686302700">phone=+506.8630.2700</a>
+      <a class="flag" href="https://linkedin.com/in/jin-lin-ec21" target="_blank" rel="noopener">linkedin=jin-lin-ec21</a>
+      <a class="flag" href="https://github.com/jlin80" target="_blank" rel="noopener">github=jlin80</a>
+      <span class="flag nolink">loc=San_José,CR</span>
+    </div>
+  </div>
+  <div class="scroll-hint" data-i18n="hero.scroll">▼ SCROLL ▼</div>
+</section>
+
+<div class="divA">════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.about">ABOUT_ME.TXT</div></div>
+    <div class="reveal d1 term">
+      <div class="term-bar">
+        <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+        <div class="term-title">bash — jin@localhost:~ — 80×24</div>
+      </div>
+      <div class="term-body">
+        <div class="tp" data-i18n="about.cmd">cat profile.txt</div><br>
+        <p data-i18n-html="about.p1">Systems Engineering student currently working in network operations<br>at a managed services data center.</p><br>
+        <p data-i18n-html="about.p2">Hands-on background in <span class="ha">infrastructure troubleshooting</span>,<br><span class="ha">server monitoring</span>, and <span class="ha">technical support</span>.</p><br>
+        <p data-i18n-html="about.p3">Focused on growing toward <span class="hc">cloud infrastructure</span>,<br><span class="hc">server administration</span>, and <span class="hp">web development</span>.</p><br>
+        <div class="tp"><span class="blink"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divA">░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░</div>
+
+<!-- EXPERIENCE -->
+<div id="experience">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.exp">EXPERIENCE.LOG</div></div>
+    <div class="timeline">
+
+      <div class="tl-entry reveal d1">
+        <div class="tl-ts">[2026-03-01 → PRESENT] <span class="badge badge-on" data-i18n="badge.active">● ACTIVE</span></div>
+        <div class="tl-title" data-i18n="exp.1.title">Network Operations Specialist</div>
+        <div class="tl-co"   data-i18n="exp.1.co">@ RackNation — San José, Costa Rica</div>
+        <ul class="tl-list">
+          <li data-i18n="exp.1.b1">Monitor hosting and network infrastructure for a managed services provider, ensuring uptime of servers, hosted applications, and network services across customer environments.</li>
+          <li data-i18n="exp.1.b2">Troubleshoot infrastructure incidents including DNS failures, email delivery issues, and connectivity outages using cPanel, BitNinja, and Acronis.</li>
+          <li data-i18n="exp.1.b3">Escalate complex networking incidents to engineering teams with detailed diagnostic reports and full troubleshooting documentation.</li>
+          <li data-i18n="exp.1.b4">Assist in server assembly and rack mounting; perform routine system checks and maintain accurate incident records in the ticketing platform.</li>
+        </ul>
+      </div>
+
+      <div class="tl-entry reveal d2">
+        <div class="tl-ts">[2025-02-01 → 2026-03-01] <span class="badge badge-off" data-i18n="badge.done">✓ COMPLETED</span></div>
+        <div class="tl-title" data-i18n="exp.2.title">Affirm Support & Customer Service Agent</div>
+        <div class="tl-co"   data-i18n="exp.2.co">@ Bill Gosling Outsourcing — Heredia, Costa Rica</div>
+        <ul class="tl-list">
+          <li data-i18n="exp.2.b1">Provided Tier 1 support for Affirm, a large-scale fintech SaaS platform, resolving user inquiries related to account access, payments, and transaction issues.</li>
+          <li data-i18n="exp.2.b2">Guided customers through troubleshooting across mobile and web platforms, including app reinstalls, browser compatibility testing, and device-specific issue reproduction.</li>
+          <li data-i18n="exp.2.b3">Escalated unresolved cases to specialized teams with complete interaction documentation in Salesforce CRM, ensuring accurate handoff.</li>
+          <li data-i18n="exp.2.b4">Managed high volumes of concurrent customer interactions while maintaining consistent quality and follow-up on open cases.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divA">════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════</div>
+
+<!-- EDUCATION -->
+<div id="education">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.edu">EDUCATION.DIR</div></div>
+    <div class="reveal d1 dir">
+      <div class="dir-head" data-i18n="edu.head">TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSTITUTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATE</div>
+      <div class="dir-row">
+        <div class="dir-ico">[DIR]</div>
+        <div>
+          <div class="dir-nm"  data-i18n="edu.1.name">Fidélitas University</div>
+          <div class="dir-sub" data-i18n="edu.1.sub">B.S. in Systems Engineering — Santa Marta, CR</div>
+        </div>
+        <div class="dir-dt" data-i18n-html="edu.1.date">Jan 2023<br>→ PRESENT</div>
+      </div>
+      <div class="dir-row">
+        <div class="dir-ico">[FILE]</div>
+        <div>
+          <div class="dir-nm"  data-i18n="edu.2.name">Colegio Victoria Bilingüe</div>
+          <div class="dir-sub" data-i18n="edu.2.sub">Highschool Diploma in General Education — Tres Ríos, CR</div>
+        </div>
+        <div class="dir-dt" data-i18n-html="edu.2.date">Jan 2010<br>→ Dec 2022</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divA">░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░</div>
+
+<!-- CERTIFICATIONS -->
+<div id="certs">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.certs">CERTIFICATIONS.DAT</div></div>
+    <div class="cert-grid">
+
+      <div class="cert-card reveal d1" style="--w:55%">
+        <div class="cert-top">
+          <div class="cert-nm" data-i18n="cert.1.name">Web Development</div>
+          <div><div class="cert-org">FIDÉLITAS UNIVERSITY</div><div class="cert-yr">Sept 2024 → Present</div></div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+
+      <div class="cert-card reveal d2" style="--w:100%">
+        <div class="cert-top">
+          <div class="cert-nm" data-i18n="cert.2.name">Web Development</div>
+          <div><div class="cert-org">FREECODECAMP</div><div class="cert-yr">2026</div></div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+
+      <div class="cert-card reveal d2" style="--w:100%">
+        <div class="cert-top">
+          <div class="cert-nm" data-i18n="cert.3.name">Intro to Cybersecurity</div>
+          <div><div class="cert-org">CISCO NETWORKING ACADEMY</div><div class="cert-yr">2025</div></div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+
+      <div class="cert-card reveal d3" style="--w:100%">
+        <div class="cert-top">
+          <div class="cert-nm" data-i18n="cert.4.name">Introduction to IoT</div>
+          <div><div class="cert-org">CISCO NETWORKING ACADEMY</div><div class="cert-yr">2024</div></div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divA">════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════</div>
+
+<!-- PROJECTS -->
+<div id="projects">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.proj">PROJECTS.SH</div></div>
+    <div class="reveal d1 term">
+      <div class="term-bar">
+        <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+        <div class="term-title">homelab@proxmox — root — /etc/homelab</div>
+      </div>
+      <div class="term-body">
+        <div class="tp" data-i18n="proj.cmd">cat README.md</div><br>
+        <div style="font-size:26px;color:var(--accent);text-shadow:var(--glow-a);letter-spacing:2px;margin-bottom:14px;" data-i18n="proj.title">Personal Homelab Infrastructure</div>
+        <div class="proj-meta">
+          <span class="pbadge pbadge-g" data-i18n="badge.active">● ACTIVE</span>
+          <span class="pbadge pbadge-a" data-i18n="proj.type">SELF-HOSTED</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--cyan);align-self:center;">Dec 2025 → present</span>
+        </div>
+        <div class="proj-specs">
+          <div class="spec"><span class="sk" data-i18n="spec.hw">HARDWARE: </span>HP Thin Client t610</div>
+          <div class="spec"><span class="sk" data-i18n="spec.up">UPGRADE:  </span>RAM expansion</div>
+          <div class="spec"><span class="sk" data-i18n="spec.net">NETWORK:  </span>Managed switch + dual-router</div>
+          <div class="spec"><span class="sk" data-i18n="spec.hv">HYPERVISOR:</span>Proxmox VE</div>
+        </div>
+        <div style="color:var(--text-dim);font-family:'VT323',monospace;font-size:17px;letter-spacing:2px;" data-i18n="proj.planned">// PLANNED_SERVICES</div>
+        <div class="svc-tags">
+          <span class="svc" data-i18n="svc.nas">NAS · Local Backups</span>
+          <span class="svc" data-i18n="svc.pihole">Pi-hole · DNS Filtering</span>
+          <span class="svc">Tailscale · VPN</span>
+          <span class="svc" data-i18n="svc.mc">Minecraft · Game Server</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2 term" style="margin-top:24px;">
+      <div class="term-bar">
+        <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+        <div class="term-title">desserts@firebase — admin — /var/www/app</div>
+      </div>
+      <div class="term-body">
+        <div class="tp" data-i18n="proj2.cmd">cat README.md</div><br>
+        <div style="font-size:26px;color:var(--accent);text-shadow:var(--glow-a);letter-spacing:2px;margin-bottom:14px;" data-i18n="proj2.title">Desserts In A Cup — E-commerce Web App</div>
+        <div class="proj-meta">
+          <span class="pbadge pbadge-g" data-i18n="badge.active">● ACTIVE</span>
+          <span class="pbadge pbadge-a" data-i18n="proj2.type">WEB APP</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--cyan);align-self:center;">May 2026 → present</span>
+        </div>
+        <div class="proj-specs">
+          <div class="spec"><span class="sk" data-i18n="spec2.stack">STACK:    </span>HTML5 · CSS · Vanilla JS</div>
+          <div class="spec"><span class="sk" data-i18n="spec2.auth">AUTH:     </span>Firebase Authentication</div>
+          <div class="spec"><span class="sk" data-i18n="spec2.db">DB:       </span>Firebase Firestore</div>
+          <div class="spec"><span class="sk" data-i18n="spec2.order">ORDER:    </span>WhatsApp Business</div>
+        </div>
+        <div style="color:var(--text-dim);font-family:'VT323',monospace;font-size:17px;letter-spacing:2px;" data-i18n="proj2.features">// FEATURES</div>
+        <div class="svc-tags">
+          <span class="svc" data-i18n="svc2.cart">Shopping Cart</span>
+          <span class="svc" data-i18n="svc2.checkout">Checkout Flow</span>
+          <span class="svc" data-i18n="svc2.admin">Admin Dashboard</span>
+          <span class="svc" data-i18n="svc2.responsive">Responsive Layout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divA">░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░░░▒▒▓▓██▓▓▒▒░░</div>
+
+<!-- SKILLS -->
+<div id="skills">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.skills">SKILLS.INI</div></div>
+
+    <div class="reveal d1 filter-row" id="filter-row">
+      <button class="fbtn on" data-cat="all"     data-i18n="filter.all">ALL</button>
+      <button class="fbtn"    data-cat="support"  data-i18n="filter.support">SUPPORT</button>
+      <button class="fbtn"    data-cat="infra"    data-i18n="filter.infra">INFRA</button>
+      <button class="fbtn"    data-cat="os"       data-i18n="filter.os">OS</button>
+      <button class="fbtn"    data-cat="tools"    data-i18n="filter.tools">TOOLS</button>
+      <button class="fbtn"    data-cat="code"     data-i18n="filter.code">CODE</button>
+      <button class="fbtn"    data-cat="lang"     data-i18n="filter.lang">LANGUAGES</button>
+    </div>
+
+    <div class="sk-grid" id="sk-grid">
+      <div class="sk-cat reveal d1" data-cat="support">
+        <div class="sk-cat-nm" data-i18n="sk.support">TECHNICAL_SUPPORT</div>
+        <div class="tags">
+          <span class="tag" data-i18n="tag.tier1">Tier 1 Troubleshooting</span>
+          <span class="tag" data-i18n="tag.noc">NOC Operations</span>
+          <span class="tag" data-i18n="tag.monitoring">Infrastructure Monitoring</span>
+          <span class="tag" data-i18n="tag.reproduction">Issue Reproduction</span>
+          <span class="tag" data-i18n="tag.escalation">Escalation Workflows</span>
+          <span class="tag" data-i18n="tag.custSupport">Customer-facing Support</span>
+        </div>
+      </div>
+      <div class="sk-cat reveal d1" data-cat="infra">
+        <div class="sk-cat-nm" data-i18n="sk.infra">INFRASTRUCTURE_&_NETWORKING</div>
+        <div class="tags">
+          <span class="tag" data-i18n="tag.dns">DNS Troubleshooting</span>
+          <span class="tag" data-i18n="tag.connectivity">Connectivity Diagnostics</span>
+          <span class="tag" data-i18n="tag.serverMon">Server Monitoring</span>
+          <span class="tag" data-i18n="tag.backup">Backup & Recovery</span>
+          <span class="tag tag-a">Acronis</span>
+          <span class="tag tag-a">cPanel</span>
+          <span class="tag tag-a">BitNinja</span>
+          <span class="tag tag-a">SSH</span>
+        </div>
+      </div>
+      <div class="sk-cat reveal d2" data-cat="os">
+        <div class="sk-cat-nm" data-i18n="sk.os">OPERATING_SYSTEMS</div>
+        <div class="tags">
+          <span class="tag tag-a">Linux</span>
+          <span class="tag">Windows</span>
+          <span class="tag">macOS</span>
+          <span class="tag">iOS</span>
+        </div>
+      </div>
+      <div class="sk-cat reveal d2" data-cat="tools">
+        <div class="sk-cat-nm" data-i18n="sk.tools">TOOLS_&_PLATFORMS</div>
+        <div class="tags">
+          <span class="tag">Salesforce</span>
+          <span class="tag">TeamViewer</span>
+          <span class="tag">VirtualBox</span>
+          <span class="tag tag-a">Proxmox</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Microsoft 365</span>
+        </div>
+      </div>
+      <div class="sk-cat reveal d3" data-cat="code">
+        <div class="sk-cat-nm" data-i18n="sk.code">PROGRAMMING</div>
+        <div class="tags">
+          <span class="tag tag-c">Python</span>
+          <span class="tag tag-c">HTML</span>
+          <span class="tag tag-c">CSS</span>
+          <span class="tag tag-c">JavaScript</span>
+          <span class="tag" data-i18n="tag.sql">SQL (basic)</span>
+        </div>
+      </div>
+      <div class="sk-cat reveal d3" data-cat="lang">
+        <div class="sk-cat-nm" data-i18n="sk.lang">LANGUAGES</div>
+        <div class="tags">
+          <span class="tag" data-i18n="tag.english">English (C1)</span>
+          <span class="tag tag-a" data-i18n="tag.spanish">Spanish (native)</span>
+          <span class="tag tag-a" data-i18n="tag.cantonese">Cantonese (native)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-head" data-i18n="sec.contact">CONTACT.SH</div></div>
+    <div class="contact-grid">
+
+      <div class="reveal d1">
+        <div class="cp-prompt">
+          <span class="cpu">jin</span>@<span class="cph">localhost</span>:~$ <span class="cpc" data-i18n="contact.cmd">./reach_out.sh</span><br>
+          <span style="color:var(--text-dim);" data-i18n="contact.line1">// Initializing contact protocols...</span><br>
+          <span style="color:var(--text-dim);" data-i18n="contact.line2">// All systems nominal. Ready for connection.</span>
+        </div>
+        <div class="c-links">
+          <a class="c-link" href="mailto:jin.lin.h18@gmail.com">
+            <span class="c-ltype">EMAIL</span>jin.lin.h18@gmail.com
+          </a>
+          <a class="c-link" href="tel:+50686302700">
+            <span class="c-ltype">PHONE</span>+506 8630 2700
+          </a>
+          <a class="c-link" href="https://linkedin.com/in/jin-lin-ec21" target="_blank" rel="noopener">
+            <span class="c-ltype">LINKEDIN</span>linkedin.com/in/jin-lin-ec21
+          </a>
+          <a class="c-link" href="https://github.com/jlin80" target="_blank" rel="noopener">
+            <span class="c-ltype">GITHUB</span>github.com/jlin80
+          </a>
+          <span class="c-link" style="cursor:default;">
+            <span class="c-ltype" data-i18n="contact.loc">LOCATION</span>San José, Costa Rica
+          </span>
+        </div>
+      </div>
+
+      <div class="reveal d2">
+        <form class="cform" id="cform" novalidate>
+          <div>
+            <label class="flabel" for="fn" data-i18n="contact.lbl.name">name</label>
+            <input class="finput" id="fn" type="text" data-i18n-placeholder="contact.ph.name" placeholder="Your name" required />
+          </div>
+          <div>
+            <label class="flabel" for="fe" data-i18n="contact.lbl.email">email</label>
+            <input class="finput" id="fe" type="email" data-i18n-placeholder="contact.ph.email" placeholder="your@email.com" required />
+          </div>
+          <div>
+            <label class="flabel" for="fm" data-i18n="contact.lbl.msg">message</label>
+            <textarea class="ftarea" id="fm" data-i18n-placeholder="contact.ph.msg" placeholder="Type your message..." required></textarea>
+          </div>
+          <button class="fsubmit" type="submit" data-i18n="contact.btn">[ SEND_MESSAGE ]</button>
+          <div class="fmsg" id="fmsg"></div>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">╔══════════════════════════════════════════════════════════════════════════════╗
+║  JIN HENG LIN HUANG  ·  Systems Engineering  ·  NOC Specialist  ·  CR      ║
+║  STATUS: SEEKING_OPPORTUNITIES  ·  BUILD: 2026  ·  UPTIME: 100%            ║
+╚══════════════════════════════════════════════════════════════════════════════╝</div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
