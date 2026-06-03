@@ -484,17 +484,73 @@ body::after {
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width:640px) {
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display:none;
+  background:none; border:1px solid var(--p-dim);
+  color:var(--primary); font-family:'VT323',monospace;
+  font-size:20px; padding:4px 10px; cursor:pointer;
+  letter-spacing:1px; transition:all .15s; margin-left:8px;
+}
+.nav-hamburger:hover { background:var(--primary); color:var(--bg); }
+
+/* Tablet ≤ 1024px */
+@media (max-width:1024px) {
+  .wrap { padding:70px 28px; }
+}
+
+/* Tablet / large phone ≤ 768px — hamburger kicks in */
+@media (max-width:768px) {
+  .nav-hamburger { display:block; }
+  .nav-clock { display:none; }
+  #nav { position:relative; }
+  .nav-links {
+    display:none; position:absolute;
+    top:42px; left:0; right:0;
+    flex-direction:column;
+    background:var(--bg-nav);
+    border-bottom:2px solid var(--primary);
+    box-shadow:0 8px 24px rgba(0,255,65,.12);
+    z-index:999;
+  }
+  .nav-links.open { display:flex; }
+  .nav-links li { display:block; }
+  .nav-links a {
+    height:auto; line-height:1;
+    padding:13px 20px; font-size:20px;
+    border-right:none; border-bottom:1px solid var(--border);
+  }
   .cert-grid { grid-template-columns:1fr; }
-}
-@media (max-width:680px) {
   .contact-grid { grid-template-columns:1fr; }
+  .footer-bar { white-space:normal; overflow-wrap:break-word; text-align:left; }
+  .dir-head { display:none; }
 }
+
+/* Small phone ≤ 600px */
 @media (max-width:600px) {
-  .wrap { padding:60px 18px; }
+  .wrap { padding:56px 16px; }
   .nav-logo { display:none; }
-  .nav-links li:nth-child(n+5) { display:none; }
-  .hero-name { font-size:11px; }
+  .hero-sys { letter-spacing:2px; }
+  .hero-sub { font-size:18px; }
+  .flag { font-size:11px; padding:4px 9px; }
+  .tl-title { font-size:22px; }
+  .tl-list li { font-size:12px; }
+  .dir-row { grid-template-columns:50px 1fr; }
+  .dir-dt { display:none; }
+  .term-body { padding:14px; font-size:18px; }
+  .proj-specs { grid-template-columns:1fr; }
+  .filter-row { gap:6px; }
+  .fbtn { font-size:16px; padding:3px 12px; }
+  .footer-bar { font-size:9px; overflow:hidden; }
+}
+
+/* Very small phone ≤ 400px */
+@media (max-width:400px) {
+  .wrap { padding:48px 12px; }
+  .hero-name { font-size:11px; letter-spacing:1px; }
+  .flag { font-size:10px; padding:3px 7px; }
+  .hero-sub { font-size:16px; }
 }
 
 /* ── GLITCH ──────────────────────────────────────────────── */

@@ -1,3 +1,22 @@
+/* ── HAMBURGER MENU ─────────────────────────────────── */
+(function hamburger() {
+  const btn   = document.getElementById('nav-hamburger');
+  const links = document.getElementById('nav-links');
+  if (!btn || !links) return;
+
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.textContent = open ? '✕ CLOSE' : '☰ MENU';
+  });
+
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.textContent = '☰ MENU';
+    });
+  });
+})();
+
 /* ── CLOCK ─────────────────────────────────────────── */
 (function clock() {
   const el = document.getElementById('clock');
