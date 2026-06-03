@@ -69,7 +69,7 @@ const t = {
     'cert.3.name': 'Intro to Cybersecurity', 'cert.4.name': 'Introduction to IoT',
     'cert.5.name': 'AI Fundamentals', 'cert.6.name': 'Introduction to Modern AI',
     'cert.7.name': 'Linux Unhatched', 'cert.8.name': 'Network Defense',
-    'cert.9.name': 'JavaScript', 'cert.10.name': 'CSS Bootstrap', 'cert.11.name': 'HTML5 y CSS',
+    'cert.12.name': 'Cyber Threat Management', 'cert.13.name': 'Endpoint Security',
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Personal Homelab Infrastructure',
     'proj.type': 'SELF-HOSTED', 'proj.planned': '// PLANNED_SERVICES',
@@ -155,7 +155,7 @@ const t = {
     'cert.3.name': 'Intro a Ciberseguridad', 'cert.4.name': 'Introducción a IoT',
     'cert.5.name': 'Fundamentos de IA', 'cert.6.name': 'Introducción a la IA Moderna',
     'cert.7.name': 'Linux Unhatched', 'cert.8.name': 'Defensa de Redes',
-    'cert.9.name': 'JavaScript', 'cert.10.name': 'CSS Bootstrap', 'cert.11.name': 'HTML5 y CSS',
+    'cert.12.name': 'Gestión de Amenazas Cibernéticas', 'cert.13.name': 'Seguridad en Endpoints',
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Infraestructura Homelab Personal',
     'proj.type': 'AUTO-ALOJADO', 'proj.planned': '// SERVICIOS_PLANEADOS',
