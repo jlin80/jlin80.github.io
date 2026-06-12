@@ -92,7 +92,7 @@ const t = {
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Personal Homelab Infrastructure',
     'proj.type': 'SELF-HOSTED', 'proj.planned': '// SERVICES',
-    'spec.hw': 'HARDWARE: ', 'spec.up': 'UPGRADE:  ', 'spec.net': 'NETWORK:  ', 'spec.hv': 'HYPERVISOR:',
+    'spec.hw': 'HARDWARE: ', 'spec.net': 'NETWORK:  ', 'spec.hv': 'HYPERVISOR:',
     'svc.nas': 'NAS · Local Backups', 'svc.pihole': 'Pi-hole · DNS Filtering',
     'svc.docker': 'Docker · Containers', 'svc.portainer': 'Portainer · Container UI',
     'svc.terraform': 'Terraform · IaC', 'svc.grafana': 'Grafana · Monitoring',
@@ -180,7 +180,7 @@ const t = {
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Infraestructura Homelab Personal',
     'proj.type': 'AUTO-ALOJADO', 'proj.planned': '// SERVICIOS',
-    'spec.hw': 'HARDWARE: ', 'spec.up': 'MEJORA:   ', 'spec.net': 'RED:      ', 'spec.hv': 'HIPERVISOR:',
+    'spec.hw': 'HARDWARE: ', 'spec.net': 'RED:      ', 'spec.hv': 'HIPERVISOR:',
     'svc.nas': 'NAS · Copias de Seguridad', 'svc.pihole': 'Pi-hole · Filtrado DNS',
     'svc.docker': 'Docker · Contenedores', 'svc.portainer': 'Portainer · UI de Contenedores',
     'svc.terraform': 'Terraform · IaC', 'svc.grafana': 'Grafana · Monitoreo',
