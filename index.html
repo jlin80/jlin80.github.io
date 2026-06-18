@@ -73,9 +73,9 @@
       </div>
       <div class="term-body">
         <div class="tp" data-i18n="about.cmd">cat profile.txt</div><br>
-        <p data-i18n-html="about.p1">Systems Engineering student currently working in network operations<br>at a managed services data center.</p><br>
-        <p data-i18n-html="about.p2">Hands-on background in <span class="ha">infrastructure troubleshooting</span>,<br><span class="ha">server monitoring</span>, and <span class="ha">technical support</span>.</p><br>
-        <p data-i18n-html="about.p3">Focused on growing toward <span class="hc">cloud infrastructure</span>,<br><span class="hc">server administration</span>, and <span class="hp">web development</span>.</p><br>
+        <p data-i18n-html="about.p1">Systems Engineering student and network operations specialist<br>moving toward cloud infrastructure and DevOps.</p><br>
+        <p data-i18n-html="about.p2">Hands-on with <span class="ha">Linux administration</span>, <span class="ha">containerization</span> (Proxmox/LXC),<br><span class="ha">Terraform IaC</span>, and self-hosted services built and monitored in a homelab.</p><br>
+        <p data-i18n-html="about.p3">Also deploying <span class="hc">serverless apps</span> on Firebase with CI/CD workflows —<br>focused on growing into a <span class="hp">cloud/DevOps engineering</span> role.</p><br>
         <div class="tp"><span class="blink"></span></div>
       </div>
     </div>
@@ -218,18 +218,26 @@
         <div class="bar-wrap"><div class="bar-fill"></div></div>
       </div>
 
-      <div class="cert-card reveal d1" style="--w:55%">
+      <div class="cert-card reveal d1" style="--w:100%">
         <div class="cert-top">
           <div class="cert-nm" data-i18n="cert.1.name">Web Development</div>
-          <div><div class="cert-org">FIDÉLITAS UNIVERSITY</div><div class="cert-yr">Sept 2024 → Present</div></div>
+          <div><div class="cert-org">FIDÉLITAS UNIVERSITY</div><div class="cert-yr">2026</div></div>
         </div>
         <div class="bar-wrap"><div class="bar-fill"></div></div>
       </div>
 
       <div class="cert-card reveal d2" style="--w:100%">
         <div class="cert-top">
-          <div class="cert-nm" data-i18n="cert.2.name">Web Development</div>
-          <div><div class="cert-org">FREECODECAMP</div><div class="cert-yr">2026</div></div>
+          <div class="cert-nm" data-i18n="cert.9.name">Introduction to Networks</div>
+          <div><div class="cert-org">CISCO NETWORKING ACADEMY</div><div class="cert-yr">2023</div></div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+
+      <div class="cert-card reveal d3" style="--w:100%">
+        <div class="cert-top">
+          <div class="cert-nm" data-i18n="cert.10.name">AWS Cloud Quest: Cloud Practitioner</div>
+          <div><div class="cert-org">AMAZON WEB SERVICES</div><div class="cert-yr">2026</div></div>
         </div>
         <div class="bar-wrap"><div class="bar-fill"></div></div>
       </div>
@@ -260,7 +268,8 @@
         <div class="proj-specs">
           <div class="spec"><span class="sk" data-i18n="spec.hw">HARDWARE: </span>HP Thin Client t610</div>
           <div class="spec"><span class="sk" data-i18n="spec.net">NETWORK:  </span>Managed switch + dual-router</div>
-          <div class="spec"><span class="sk" data-i18n="spec.hv">HYPERVISOR:</span>Proxmox VE</div>
+          <div class="spec"><span class="sk" data-i18n="spec.hv">HYPERVISOR:</span>Proxmox VE 9 · Debian 12</div>
+          <div class="spec"><span class="sk" data-i18n="spec.iac">IaC:      </span>Terraform · bpg/proxmox</div>
         </div>
         <div style="color:var(--text-dim);font-family:'VT323',monospace;font-size:17px;letter-spacing:2px;" data-i18n="proj.planned">// SERVICES</div>
         <div class="svc-tags">
@@ -268,9 +277,10 @@
           <span class="svc" data-i18n="svc.portainer">Portainer · Container UI</span>
           <span class="svc" data-i18n="svc.terraform">Terraform · IaC</span>
           <span class="svc" data-i18n="svc.grafana">Grafana · Monitoring</span>
+          <span class="svc" data-i18n="svc.kuma">Uptime Kuma · Monitoring</span>
+          <span class="svc" data-i18n="svc.n8n">n8n · Automation</span>
           <span class="svc">Tailscale · VPN</span>
           <span class="svc" data-i18n="svc.pihole">Pi-hole · DNS Filtering</span>
-          <span class="svc" data-i18n="svc.nas">NAS · Local Backups</span>
         </div>
       </div>
     </div>
@@ -347,7 +357,7 @@
       <button class="fbtn"    data-cat="support"  data-i18n="filter.support">SUPPORT</button>
       <button class="fbtn"    data-cat="infra"    data-i18n="filter.infra">INFRA</button>
       <button class="fbtn"    data-cat="os"       data-i18n="filter.os">OS</button>
-      <button class="fbtn"    data-cat="tools"    data-i18n="filter.tools">TOOLS</button>
+      <button class="fbtn"    data-cat="cloud"    data-i18n="filter.cloud">CLOUD</button>
       <button class="fbtn"    data-cat="code"     data-i18n="filter.code">CODE</button>
       <button class="fbtn"    data-cat="lang"     data-i18n="filter.lang">LANGUAGES</button>
     </div>
@@ -386,17 +396,20 @@
           <span class="tag">iOS</span>
         </div>
       </div>
-      <div class="sk-cat reveal d2" data-cat="tools">
-        <div class="sk-cat-nm" data-i18n="sk.tools">TOOLS_&_PLATFORMS</div>
+      <div class="sk-cat reveal d2" data-cat="cloud">
+        <div class="sk-cat-nm" data-i18n="sk.cloud">CLOUD_&_DEVOPS</div>
         <div class="tags">
-          <span class="tag">Salesforce</span>
-          <span class="tag">TeamViewer</span>
-          <span class="tag">AnyDesk</span>
-          <span class="tag">VirtualBox</span>
-          <span class="tag tag-a">Proxmox</span>
+          <span class="tag tag-a">Proxmox VE (LXC)</span>
+          <span class="tag tag-a">Docker</span>
+          <span class="tag tag-a">Firebase</span>
+          <span class="tag tag-a">Tailscale</span>
+          <span class="tag tag-a">Terraform</span>
+          <span class="tag tag-a">n8n</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">GitHub Pages</span>
+          <span class="tag">Bash scripting</span>
           <span class="tag">Git</span>
           <span class="tag">GitHub</span>
-          <span class="tag">Microsoft 365</span>
         </div>
       </div>
       <div class="sk-cat reveal d3" data-cat="code">

@@ -61,9 +61,9 @@ const t = {
     'sec.proj': 'PROJECTS.SH', 'sec.skills': 'SKILLS.INI', 'sec.contact': 'CONTACT.SH',
     // About
     'about.cmd': 'cat profile.txt',
-    'about.p1': 'Systems Engineering student currently working in network operations<br>at a managed services data center.',
-    'about.p2': 'Hands-on background in <span class="ha">infrastructure troubleshooting</span>,<br><span class="ha">server monitoring</span>, and <span class="ha">technical support</span>.',
-    'about.p3': 'Focused on growing toward <span class="hc">cloud infrastructure</span>,<br><span class="hc">server administration</span>, and <span class="hp">web development</span>.',
+    'about.p1': 'Systems Engineering student and network operations specialist<br>moving toward cloud infrastructure and DevOps.',
+    'about.p2': 'Hands-on with <span class="ha">Linux administration</span>, <span class="ha">containerization</span> (Proxmox/LXC),<br><span class="ha">Terraform IaC</span>, and self-hosted services built and monitored in a homelab.',
+    'about.p3': 'Also deploying <span class="hc">serverless apps</span> on Firebase with CI/CD workflows —<br>focused on growing into a <span class="hp">cloud/DevOps engineering</span> role.',
     // Badges
     'badge.active': '● ACTIVE', 'badge.done': '✓ COMPLETED',
     // Experience
@@ -88,6 +88,7 @@ const t = {
     'cert.3.name': 'Intro to Cybersecurity', 'cert.4.name': 'Introduction to IoT',
     'cert.5.name': 'AI Fundamentals', 'cert.6.name': 'Introduction to Modern AI',
     'cert.7.name': 'Linux Unhatched', 'cert.8.name': 'Network Defense',
+    'cert.9.name': 'Introduction to Networks', 'cert.10.name': 'AWS Cloud Quest: Cloud Practitioner',
     'cert.12.name': 'Cyber Threat Management', 'cert.13.name': 'Endpoint Security',
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Personal Homelab Infrastructure',
@@ -96,6 +97,8 @@ const t = {
     'svc.nas': 'NAS · Local Backups', 'svc.pihole': 'Pi-hole · DNS Filtering',
     'svc.docker': 'Docker · Containers', 'svc.portainer': 'Portainer · Container UI',
     'svc.terraform': 'Terraform · IaC', 'svc.grafana': 'Grafana · Monitoring',
+    'svc.kuma': 'Uptime Kuma · Monitoring', 'svc.n8n': 'n8n · Automation',
+    'spec.iac': 'IaC:      ',
     'proj3.cmd': 'cat README.md', 'proj3.title': 'Personal Portfolio Website',
     'proj3.type': 'WEB APP', 'proj3.features': '// FEATURES',
     'spec3.stack': 'STACK:    ', 'spec3.i18n': 'I18N:     ', 'spec3.theme': 'THEME:    ', 'spec3.deploy': 'DEPLOY:   ',
@@ -107,10 +110,10 @@ const t = {
     'svc2.cart': 'Shopping Cart', 'svc2.checkout': 'Checkout Flow', 'svc2.admin': 'Admin Dashboard', 'svc2.responsive': 'Responsive Layout',
     // Skills filter
     'filter.all': 'ALL', 'filter.support': 'SUPPORT', 'filter.infra': 'INFRA',
-    'filter.os': 'OS', 'filter.tools': 'TOOLS', 'filter.code': 'CODE', 'filter.lang': 'LANGUAGES',
+    'filter.os': 'OS', 'filter.cloud': 'CLOUD', 'filter.code': 'CODE', 'filter.lang': 'LANGUAGES',
     // Skill categories
     'sk.support': 'TECHNICAL_SUPPORT', 'sk.infra': 'INFRASTRUCTURE_&_NETWORKING',
-    'sk.os': 'OPERATING_SYSTEMS', 'sk.tools': 'TOOLS_&_PLATFORMS',
+    'sk.os': 'OPERATING_SYSTEMS', 'sk.cloud': 'CLOUD_&_DEVOPS',
     'sk.code': 'PROGRAMMING', 'sk.lang': 'LANGUAGES',
     // Skill tags
     'tag.tier1': 'Tier 1 Troubleshooting', 'tag.noc': 'NOC Operations',
@@ -133,7 +136,7 @@ const t = {
     'contact.err.required': '// ERROR: All fields are required.',
     'contact.err.email': '// ERROR: Invalid email address.',
     // Typewriter
-    'typer': ['Systems Engineering Student', 'NOC Specialist', 'Cloud Infrastructure Learner', 'Linux & Homelab Enthusiast', 'Web Developer in Training'],
+    'typer': ['Network Operations Specialist', 'Cloud & DevOps Engineer', 'Linux & Homelab Builder', 'Infrastructure as Code Practitioner', 'Serverless App Developer'],
   },
   es: {
     // Nav
@@ -149,9 +152,9 @@ const t = {
     'sec.proj': 'PROYECTOS.SH', 'sec.skills': 'HABILIDADES.INI', 'sec.contact': 'CONTACTO.SH',
     // About
     'about.cmd': 'cat perfil.txt',
-    'about.p1': 'Estudiante de Ingeniería en Sistemas trabajando en operaciones de red<br>en un centro de datos de servicios administrados.',
-    'about.p2': 'Experiencia práctica en <span class="ha">resolución de problemas de infraestructura</span>,<br><span class="ha">monitoreo de servidores</span> y <span class="ha">soporte técnico</span>.',
-    'about.p3': 'Enfocado en crecer hacia <span class="hc">infraestructura cloud</span>,<br><span class="hc">administración de servidores</span> y <span class="hp">desarrollo web</span>.',
+    'about.p1': 'Estudiante de Ingeniería en Sistemas y especialista en operaciones de red<br>en transición hacia infraestructura cloud y DevOps.',
+    'about.p2': 'Experiencia práctica en <span class="ha">administración Linux</span>, <span class="ha">contenedorización</span> (Proxmox/LXC),<br><span class="ha">IaC con Terraform</span>, y servicios auto-alojados construidos y monitoreados en homelab.',
+    'about.p3': 'También desplegando <span class="hc">apps serverless</span> en Firebase con flujos CI/CD —<br>enfocado en crecer hacia un rol de <span class="hp">ingeniería cloud/DevOps</span>.',
     // Badges
     'badge.active': '● ACTIVO', 'badge.done': '✓ COMPLETADO',
     // Experience
@@ -176,6 +179,7 @@ const t = {
     'cert.3.name': 'Intro a Ciberseguridad', 'cert.4.name': 'Introducción a IoT',
     'cert.5.name': 'Fundamentos de IA', 'cert.6.name': 'Introducción a la IA Moderna',
     'cert.7.name': 'Linux Unhatched', 'cert.8.name': 'Defensa de Redes',
+    'cert.9.name': 'Introducción a Redes', 'cert.10.name': 'AWS Cloud Quest: Cloud Practitioner',
     'cert.12.name': 'Gestión de Amenazas Cibernéticas', 'cert.13.name': 'Seguridad en Endpoints',
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Infraestructura Homelab Personal',
@@ -184,6 +188,8 @@ const t = {
     'svc.nas': 'NAS · Copias de Seguridad', 'svc.pihole': 'Pi-hole · Filtrado DNS',
     'svc.docker': 'Docker · Contenedores', 'svc.portainer': 'Portainer · UI de Contenedores',
     'svc.terraform': 'Terraform · IaC', 'svc.grafana': 'Grafana · Monitoreo',
+    'svc.kuma': 'Uptime Kuma · Monitoreo', 'svc.n8n': 'n8n · Automatización',
+    'spec.iac': 'IaC:      ',
     'proj3.cmd': 'cat README.md', 'proj3.title': 'Portafolio Personal',
     'proj3.type': 'APP WEB', 'proj3.features': '// FUNCIONALIDADES',
     'spec3.stack': 'STACK:    ', 'spec3.i18n': 'I18N:     ', 'spec3.theme': 'TEMA:     ', 'spec3.deploy': 'DEPLOY:   ',
@@ -195,10 +201,10 @@ const t = {
     'svc2.cart': 'Carrito de Compras', 'svc2.checkout': 'Flujo de Pago', 'svc2.admin': 'Panel de Admin', 'svc2.responsive': 'Diseño Responsivo',
     // Skills filter
     'filter.all': 'TODO', 'filter.support': 'SOPORTE', 'filter.infra': 'INFRA',
-    'filter.os': 'OS', 'filter.tools': 'HERRAM.', 'filter.code': 'CÓDIGO', 'filter.lang': 'IDIOMAS',
+    'filter.os': 'OS', 'filter.cloud': 'CLOUD', 'filter.code': 'CÓDIGO', 'filter.lang': 'IDIOMAS',
     // Skill categories
     'sk.support': 'SOPORTE_TÉCNICO', 'sk.infra': 'INFRAESTRUCTURA_Y_REDES',
-    'sk.os': 'SISTEMAS_OPERATIVOS', 'sk.tools': 'HERRAMIENTAS_Y_PLATAFORMAS',
+    'sk.os': 'SISTEMAS_OPERATIVOS', 'sk.cloud': 'CLOUD_Y_DEVOPS',
     'sk.code': 'PROGRAMACIÓN', 'sk.lang': 'IDIOMAS',
     // Skill tags
     'tag.tier1': 'Soporte Tier 1', 'tag.noc': 'Operaciones NOC',
@@ -221,7 +227,7 @@ const t = {
     'contact.err.required': '// ERROR: Todos los campos son requeridos.',
     'contact.err.email': '// ERROR: Correo electrónico inválido.',
     // Typewriter
-    'typer': ['Estudiante de Ingeniería en Sistemas', 'Especialista NOC', 'Aprendiz de Infraestructura Cloud', 'Entusiasta de Linux y Homelab', 'Desarrollador Web en Formación'],
+    'typer': ['Especialista en Operaciones de Red', 'Ingeniero Cloud & DevOps', 'Constructor de Homelab Linux', 'Practicante de Infraestructura como Código', 'Desarrollador de Apps Serverless'],
   }
 };
 
