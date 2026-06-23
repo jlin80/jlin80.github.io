@@ -73,9 +73,9 @@
       </div>
       <div class="term-body">
         <div class="tp" data-i18n="about.cmd">cat profile.txt</div><br>
-        <p data-i18n-html="about.p1">Systems Engineering student and network operations specialist<br>moving toward cloud infrastructure and DevOps.</p><br>
-        <p data-i18n-html="about.p2">Hands-on with <span class="ha">Linux administration</span>, <span class="ha">containerization</span> (Proxmox/LXC),<br><span class="ha">Terraform IaC</span>, and self-hosted services built and monitored in a homelab.</p><br>
-        <p data-i18n-html="about.p3">Also deploying <span class="hc">serverless apps</span> on Firebase with CI/CD workflows —<br>focused on growing into a <span class="hp">cloud/DevOps engineering</span> role.</p><br>
+        <p data-i18n-html="about.p1">Systems Engineering student and infrastructure specialist<br>focused on cloud engineering.</p><br>
+        <p data-i18n-html="about.p2">Design, provision, and monitor <span class="ha">infrastructure as code</span> with <span class="ha">Terraform</span><br>across a self-hosted <span class="ha">2-node Proxmox/LXC cluster</span>, with <span class="ha">Docker</span> containers and <span class="ha">Prometheus/Grafana</span> observability.</p><br>
+        <p data-i18n-html="about.p3">Also building <span class="hc">serverless apps</span> on Google Cloud / Firebase with Git-based CI/CD —<br>backed by daily production ops experience, growing into a <span class="hp">cloud engineering</span> role.</p><br>
         <div class="tp"><span class="blink"></span></div>
       </div>
     </div>
@@ -263,24 +263,26 @@
         <div class="proj-meta">
           <span class="pbadge pbadge-g" data-i18n="badge.active">● ACTIVE</span>
           <span class="pbadge pbadge-a" data-i18n="proj.type">SELF-HOSTED</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--cyan);align-self:center;">Dec 2025 → present</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--cyan);align-self:center;">Jan 2026 → present</span>
         </div>
         <div class="proj-specs">
-          <div class="spec"><span class="sk" data-i18n="spec.hw">HARDWARE: </span>HP Thin Client t610</div>
-          <div class="spec"><span class="sk" data-i18n="spec.net">NETWORK:  </span>Managed switch + dual-router</div>
-          <div class="spec"><span class="sk" data-i18n="spec.hv">HYPERVISOR:</span>Proxmox VE 9 · Debian 12</div>
+          <div class="spec"><span class="sk" data-i18n="spec.hw">HARDWARE: </span>2× HP Thin Client t610 (cluster)</div>
+          <div class="spec"><span class="sk" data-i18n="spec.hv">HYPERVISOR:</span>Proxmox VE 9 · Debian 13</div>
           <div class="spec"><span class="sk" data-i18n="spec.iac">IaC:      </span>Terraform · bpg/proxmox</div>
+          <div class="spec"><span class="sk" data-i18n="spec.repo">REPO:     </span><a href="https://github.com/jlin80/homelab" target="_blank" rel="noopener" style="color:var(--cyan);">github.com/jlin80/homelab</a></div>
         </div>
         <div style="color:var(--text-dim);font-family:'VT323',monospace;font-size:17px;letter-spacing:2px;" data-i18n="proj.planned">// SERVICES</div>
         <div class="svc-tags">
           <span class="svc" data-i18n="svc.docker">Docker · Containers</span>
-          <span class="svc" data-i18n="svc.portainer">Portainer · Container UI</span>
           <span class="svc" data-i18n="svc.terraform">Terraform · IaC</span>
-          <span class="svc" data-i18n="svc.grafana">Grafana · Monitoring</span>
-          <span class="svc" data-i18n="svc.kuma">Uptime Kuma · Monitoring</span>
+          <span class="svc" data-i18n="svc.prometheus">Prometheus · Metrics</span>
+          <span class="svc" data-i18n="svc.grafana">Grafana · Dashboards</span>
+          <span class="svc" data-i18n="svc.homepage">Homepage · Dashboard</span>
+          <span class="svc" data-i18n="svc.nextcloud">Nextcloud · Storage</span>
           <span class="svc" data-i18n="svc.n8n">n8n · Automation</span>
-          <span class="svc">Tailscale · VPN</span>
           <span class="svc" data-i18n="svc.pihole">Pi-hole · DNS Filtering</span>
+          <span class="svc">Tailscale · VPN</span>
+          <span class="svc" data-i18n="svc.backups">ZFS + NFS · Backups</span>
         </div>
       </div>
     </div>
@@ -381,6 +383,10 @@
           <span class="tag" data-i18n="tag.connectivity">Connectivity Diagnostics</span>
           <span class="tag" data-i18n="tag.serverMon">Server Monitoring</span>
           <span class="tag" data-i18n="tag.backup">Backup & Recovery</span>
+          <span class="tag tag-a">ZFS</span>
+          <span class="tag tag-a">NFS</span>
+          <span class="tag tag-a">Nextcloud</span>
+          <span class="tag tag-a">MariaDB</span>
           <span class="tag tag-a">Acronis</span>
           <span class="tag tag-a">cPanel</span>
           <span class="tag tag-a">BitNinja</span>
@@ -399,13 +405,14 @@
       <div class="sk-cat reveal d2" data-cat="cloud">
         <div class="sk-cat-nm" data-i18n="sk.cloud">CLOUD_&_DEVOPS</div>
         <div class="tags">
-          <span class="tag tag-a">Proxmox VE (LXC)</span>
-          <span class="tag tag-a">Docker</span>
-          <span class="tag tag-a">Firebase</span>
-          <span class="tag tag-a">Tailscale</span>
           <span class="tag tag-a">Terraform</span>
+          <span class="tag tag-a">Docker</span>
+          <span class="tag tag-a">Proxmox VE (LXC)</span>
+          <span class="tag tag-a">Google Cloud / Firebase</span>
+          <span class="tag tag-a">Prometheus</span>
+          <span class="tag tag-a">Grafana</span>
+          <span class="tag tag-a">Tailscale</span>
           <span class="tag tag-a">n8n</span>
-          <span class="tag">GitHub Actions</span>
           <span class="tag">GitHub Pages</span>
           <span class="tag">Bash scripting</span>
           <span class="tag">Git</span>
