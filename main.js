@@ -61,9 +61,9 @@ const t = {
     'sec.proj': 'PROJECTS.SH', 'sec.skills': 'SKILLS.INI', 'sec.contact': 'CONTACT.SH',
     // About
     'about.cmd': 'cat profile.txt',
-    'about.p1': 'Infrastructure and cloud engineering professional with hands-on production NOC experience<br>and a self-built DevOps portfolio.',
-    'about.p2': 'Design, provision, and monitor <span class="ha">infrastructure as code</span> with <span class="ha">Terraform</span> across a self-hosted <span class="ha">2-node Proxmox/LXC cluster</span> and <span class="ha">AWS</span>.<br>Proficient in <span class="ha">Kubernetes (k3s)</span>, <span class="ha">Docker</span>, and <span class="ha">GitHub Actions CI/CD</span>.',
-    'about.p3': 'Full-stack observability with <span class="hc">Prometheus + Grafana + Loki + Alertmanager</span> —<br>backed by daily production ops, growing into a <span class="hp">cloud engineering</span> role.',
+    'about.p1': 'Systems engineering student and infrastructure professional with hands-on production<br>experience in network, server, and hosting operations.',
+    'about.p2': 'Design, build, and monitor infrastructure across <span class="ha">Linux</span>, <span class="ha">networking</span>, <span class="ha">virtualization</span>, and the <span class="ha">cloud</span> —<br>using <span class="ha">infrastructure as code</span>, containers, and <span class="ha">CI/CD</span> automation.',
+    'about.p3': 'Day-to-day production work spans <span class="hc">monitoring and observability</span>, <span class="hc">incident response</span>,<br><span class="hc">backup &amp; recovery</span>, and <span class="hp">secure access and network defense</span>.',
     // Badges
     'badge.active': '● ACTIVE', 'badge.done': '✓ COMPLETED',
     // Experience
@@ -120,6 +120,7 @@ const t = {
     'tag.escalation': 'Escalation Workflows', 'tag.custSupport': 'Customer-facing Support',
     'tag.dns': 'DNS Troubleshooting', 'tag.connectivity': 'Connectivity Diagnostics',
     'tag.serverMon': 'Server Monitoring', 'tag.backup': 'Backup & Recovery',
+    'tag.incident': 'Incident Response', 'tag.netdef': 'Network Defense', 'tag.leastpriv': 'Least-privilege Access',
     'tag.sql': 'SQL (basic)', 'tag.english': 'English (C1)',
     'tag.spanish': 'Spanish (native)', 'tag.cantonese': 'Cantonese (native)',
     // Contact
@@ -135,7 +136,7 @@ const t = {
     'contact.err.required': '// ERROR: All fields are required.',
     'contact.err.email': '// ERROR: Invalid email address.',
     // Typewriter
-    'typer': ['Network Operations Specialist', 'Cloud & DevOps Engineer', 'Linux & Homelab Builder', 'Infrastructure as Code Practitioner', 'Serverless App Developer'],
+    'typer': ['Network Operations Specialist', 'Infrastructure & Systems Engineer', 'Linux & Networking', 'Security-minded Operations', 'Automation & IaC Practitioner'],
   },
   es: {
     // Nav
@@ -151,9 +152,9 @@ const t = {
     'sec.proj': 'PROYECTOS.SH', 'sec.skills': 'HABILIDADES.INI', 'sec.contact': 'CONTACTO.SH',
     // About
     'about.cmd': 'cat perfil.txt',
-    'about.p1': 'Profesional de infraestructura e ingeniería cloud con experiencia práctica en operaciones NOC<br>y un portafolio DevOps construido por cuenta propia.',
-    'about.p2': 'Diseño, aprovisiono y monitoreo <span class="ha">infraestructura como código</span> con <span class="ha">Terraform</span> sobre un <span class="ha">clúster Proxmox/LXC de 2 nodos</span> auto-alojado y <span class="ha">AWS</span>.<br>Competente en <span class="ha">Kubernetes (k3s)</span>, <span class="ha">Docker</span> y <span class="ha">CI/CD con GitHub Actions</span>.',
-    'about.p3': 'Observabilidad completa con <span class="hc">Prometheus + Grafana + Loki + Alertmanager</span> —<br>respaldado por operaciones diarias de producción, creciendo hacia un rol de <span class="hp">ingeniería cloud</span>.',
+    'about.p1': 'Estudiante de ingeniería en sistemas y profesional de infraestructura con experiencia práctica<br>en operaciones de red, servidores y hosting en producción.',
+    'about.p2': 'Diseño, construyo y monitoreo infraestructura en <span class="ha">Linux</span>, <span class="ha">redes</span>, <span class="ha">virtualización</span> y la <span class="ha">nube</span> —<br>usando <span class="ha">infraestructura como código</span>, contenedores y automatización <span class="ha">CI/CD</span>.',
+    'about.p3': 'El trabajo diario en producción abarca <span class="hc">monitoreo y observabilidad</span>, <span class="hc">respuesta a incidentes</span>,<br><span class="hc">backup y recuperación</span>, y <span class="hp">acceso seguro y defensa de redes</span>.',
     // Badges
     'badge.active': '● ACTIVO', 'badge.done': '✓ COMPLETADO',
     // Experience
@@ -210,6 +211,7 @@ const t = {
     'tag.escalation': 'Flujos de Escalación', 'tag.custSupport': 'Soporte al Cliente',
     'tag.dns': 'Diagnóstico DNS', 'tag.connectivity': 'Diagnóstico de Conectividad',
     'tag.serverMon': 'Monitoreo de Servidores', 'tag.backup': 'Backup y Recuperación',
+    'tag.incident': 'Respuesta a Incidentes', 'tag.netdef': 'Defensa de Redes', 'tag.leastpriv': 'Acceso de Mínimo Privilegio',
     'tag.sql': 'SQL (básico)', 'tag.english': 'Inglés (C1)',
     'tag.spanish': 'Español (nativo)', 'tag.cantonese': 'Cantonés (nativo)',
     // Contact
@@ -225,7 +227,7 @@ const t = {
     'contact.err.required': '// ERROR: Todos los campos son requeridos.',
     'contact.err.email': '// ERROR: Correo electrónico inválido.',
     // Typewriter
-    'typer': ['Especialista en Operaciones de Red', 'Ingeniero Cloud & DevOps', 'Constructor de Homelab Linux', 'Practicante de Infraestructura como Código', 'Desarrollador de Apps Serverless'],
+    'typer': ['Especialista en Operaciones de Red', 'Ingeniero de Infraestructura y Sistemas', 'Linux y Redes', 'Operaciones con Enfoque en Seguridad', 'Automatización e IaC'],
   }
 };
 
