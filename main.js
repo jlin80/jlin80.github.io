@@ -61,9 +61,9 @@ const t = {
     'sec.proj': 'PROJECTS.SH', 'sec.skills': 'SKILLS.INI', 'sec.contact': 'CONTACT.SH',
     // About
     'about.cmd': 'cat profile.txt',
-    'about.p1': 'Systems engineering student and infrastructure professional with hands-on production<br>experience in network, server, and hosting operations.',
-    'about.p2': 'Design, build, and monitor infrastructure across <span class="ha">Linux</span>, <span class="ha">networking</span>, <span class="ha">virtualization</span>, and the <span class="ha">cloud</span> —<br>using <span class="ha">infrastructure as code</span>, containers, and <span class="ha">CI/CD</span> automation.',
-    'about.p3': 'Day-to-day production work spans <span class="hc">monitoring and observability</span>, <span class="hc">incident response</span>,<br><span class="hc">backup &amp; recovery</span>, and <span class="hp">secure access and network defense</span>.',
+    'about.p1': 'Systems engineering student and Network Operations Specialist with hands-on production<br>experience supporting Linux hosting, servers, and network infrastructure.',
+    'about.p2': 'Build and operate infrastructure across <span class="ha">Linux</span>, <span class="ha">networking</span>, <span class="ha">Proxmox</span>, and <span class="ha">containers</span> —<br>alongside full-stack software projects and <span class="ha">CI/CD</span> automation.',
+    'about.p3': 'Production work spans <span class="hc">incident troubleshooting</span>, <span class="hc">DNS and email delivery</span>,<br><span class="hc">backup &amp; recovery</span>, and <span class="hp">secure infrastructure operations</span>.',
     // Badges
     'badge.active': '● ACTIVE', 'badge.done': '✓ COMPLETED',
     // Experience
@@ -87,7 +87,7 @@ const t = {
     'edu.2.name': 'Colegio Victoria Bilingüe', 'edu.2.sub': 'Highschool Diploma in General Education — Tres Ríos, CR', 'edu.2.date': 'Jan 2010<br>→ Dec 2022',
     // Certs
     'cert.1.name': 'Web Development',
-    'cert.7.name': 'Linux Unhatched', 'cert.8.name': 'Network Defense',
+    'cert.8.name': 'Network Defense',
     'cert.9.name': 'Introduction to Networks',
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Homelab — Cloud Engineer Portfolio',
@@ -96,8 +96,8 @@ const t = {
     'svc.pihole': 'Pi-hole · DNS Filtering', 'svc.docker': 'Docker · Containers',
     'svc.terraform': 'Terraform · IaC', 'svc.grafana': 'Grafana · Dashboards',
     'svc.prometheus': 'Prometheus · Metrics', 'svc.homepage': 'Homepage · Dashboard',
-    'svc.nextcloud': 'Nextcloud · Storage', 'svc.backups': 'ZFS + NFS · Backups',
-    'svc.n8n': 'n8n · Automation',
+    'svc.nextcloud': 'Vaultwarden · Passwords', 'svc.backups': 'ZFS + NFS · Backups',
+    'svc.n8n': 'MediaMTX · RTSP streaming',
     'spec.iac': 'IaC:      ', 'spec.repo': 'REPO:     ',
     'spec.k8s': 'ORCHESTR: ', 'spec.cicd': 'CI/CD:    ',
     'proj3.cmd': 'cat README.md', 'proj3.title': 'Personal Portfolio Website',
@@ -154,9 +154,9 @@ const t = {
     'sec.proj': 'PROYECTOS.SH', 'sec.skills': 'HABILIDADES.INI', 'sec.contact': 'CONTACTO.SH',
     // About
     'about.cmd': 'cat perfil.txt',
-    'about.p1': 'Estudiante de ingeniería en sistemas y profesional de infraestructura con experiencia práctica<br>en operaciones de red, servidores y hosting en producción.',
-    'about.p2': 'Diseño, construyo y monitoreo infraestructura en <span class="ha">Linux</span>, <span class="ha">redes</span>, <span class="ha">virtualización</span> y la <span class="ha">nube</span> —<br>usando <span class="ha">infraestructura como código</span>, contenedores y automatización <span class="ha">CI/CD</span>.',
-    'about.p3': 'El trabajo diario en producción abarca <span class="hc">monitoreo y observabilidad</span>, <span class="hc">respuesta a incidentes</span>,<br><span class="hc">backup y recuperación</span>, y <span class="hp">acceso seguro y defensa de redes</span>.',
+    'about.p1': 'Estudiante de ingeniería en sistemas y especialista en operaciones de red con experiencia<br>práctica en soporte de hosting Linux, servidores e infraestructura de red.',
+    'about.p2': 'Construyo y opero infraestructura con <span class="ha">Linux</span>, <span class="ha">redes</span>, <span class="ha">Proxmox</span> y <span class="ha">contenedores</span> —<br>junto con proyectos de software full-stack y automatización <span class="ha">CI/CD</span>.',
+    'about.p3': 'El trabajo en producción abarca <span class="hc">diagnóstico de incidentes</span>, <span class="hc">DNS y entrega de correo</span>,<br><span class="hc">backup y recuperación</span>, y <span class="hp">operaciones seguras de infraestructura</span>.',
     // Badges
     'badge.active': '● ACTIVO', 'badge.done': '✓ COMPLETADO',
     // Experience
@@ -180,7 +180,7 @@ const t = {
     'edu.2.name': 'Colegio Victoria Bilingüe', 'edu.2.sub': 'Bachillerato en Educación General — Tres Ríos, CR', 'edu.2.date': 'Ene 2010<br>→ Dic 2022',
     // Certs
     'cert.1.name': 'Desarrollo Web',
-    'cert.7.name': 'Linux Unhatched', 'cert.8.name': 'Defensa de Redes',
+    'cert.8.name': 'Defensa de Redes',
     'cert.9.name': 'Introducción a Redes',
     // Projects
     'proj.cmd': 'cat README.md', 'proj.title': 'Homelab — Portafolio de Ingeniería Cloud',
@@ -189,8 +189,8 @@ const t = {
     'svc.pihole': 'Pi-hole · Filtrado DNS', 'svc.docker': 'Docker · Contenedores',
     'svc.terraform': 'Terraform · IaC', 'svc.grafana': 'Grafana · Dashboards',
     'svc.prometheus': 'Prometheus · Métricas', 'svc.homepage': 'Homepage · Dashboard',
-    'svc.nextcloud': 'Nextcloud · Almacenamiento', 'svc.backups': 'ZFS + NFS · Backups',
-    'svc.n8n': 'n8n · Automatización',
+    'svc.nextcloud': 'Vaultwarden · Contraseñas', 'svc.backups': 'ZFS + NFS · Backups',
+    'svc.n8n': 'MediaMTX · Streaming RTSP',
     'spec.iac': 'IaC:      ', 'spec.repo': 'REPO:     ',
     'spec.k8s': 'ORQUESTR: ', 'spec.cicd': 'CI/CD:    ',
     'proj3.cmd': 'cat README.md', 'proj3.title': 'Portafolio Personal',
