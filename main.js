@@ -133,7 +133,7 @@ const t = {
     'contact.err.required': '// ERROR: All fields are required.',
     'contact.err.email': '// ERROR: Invalid email address.',
     // Typewriter
-    'typer': ['Network Operations Specialist', 'Infrastructure & Systems Engineer', 'Linux & Networking', 'Security-minded Operations', 'Automation & IaC Practitioner'],
+    'typer': ['Network Operations Specialist', 'Linux & Networking', 'Hosting & Infrastructure Support', 'Homelab & Automation'],
   },
   es: {
     // Nav
@@ -221,7 +221,7 @@ const t = {
     'contact.err.required': '// ERROR: Todos los campos son requeridos.',
     'contact.err.email': '// ERROR: Correo electrónico inválido.',
     // Typewriter
-    'typer': ['Especialista en Operaciones de Red', 'Ingeniero de Infraestructura y Sistemas', 'Linux y Redes', 'Operaciones con Enfoque en Seguridad', 'Automatización e IaC'],
+    'typer': ['Especialista en Operaciones de Red', 'Linux y Redes', 'Soporte de Hosting e Infraestructura', 'Homelab y Automatización'],
   }
 };
 
@@ -339,7 +339,8 @@ const t = {
     cats.forEach(c => c.classList.toggle('hide', cat !== 'all' && c.dataset.cat !== cat));
   };
 
-  apply(localStorage.getItem('skillFilter') || 'all');
+  const saved = localStorage.getItem('skillFilter');
+  apply([...btns].some(b => b.dataset.cat === saved) ? saved : 'all');
 
   btns.forEach(btn => btn.addEventListener('click', () => {
     const cat = btn.dataset.cat;
