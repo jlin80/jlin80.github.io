@@ -1,424 +1,318 @@
-/* ── HAMBURGER MENU ─────────────────────────────────── */
-(function hamburger() {
-  const btn   = document.getElementById('nav-hamburger');
-  const links = document.getElementById('nav-links');
-  if (!btn || !links) return;
+/* Helpers ─────────────────────────────────────────────── */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+const store = {
+  get(k, d) { try { return localStorage.getItem(k) || d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+};
 
-  btn.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    btn.textContent = open ? '✕ CLOSE' : '☰ MENU';
-  });
-
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      btn.textContent = '☰ MENU';
-    });
-  });
-})();
-
-/* ── CLOCK ─────────────────────────────────────────── */
-(function clock() {
-  const el = document.getElementById('clock');
-  setInterval(() => {
-    const n = new Date(), p = x => String(x).padStart(2, '0');
-    el.textContent = `${p(n.getHours())}:${p(n.getMinutes())}:${p(n.getSeconds())}`;
-  }, 1000);
-})();
-
-/* ── THEME ─────────────────────────────────────────── */
-(function theme() {
-  const h   = document.documentElement;
-  const btn = document.getElementById('theme-btn');
-
-  const apply = t => {
-    h.dataset.theme = t;
-    btn.textContent = t === 'light' ? '◑ MODE' : '◐ MODE';
-  };
-
-  apply(localStorage.getItem('theme') || 'dark');
-
-  btn.addEventListener('click', () => {
-    const next = h.dataset.theme === 'light' ? 'dark' : 'light';
-    apply(next);
-    localStorage.setItem('theme', next);
-  });
-})();
-
-/* ── LANGUAGE ──────────────────────────────────────── */
+/* ── I18N ─────────────────────────────────────────────── */
 const t = {
   en: {
-    // Nav
-    'nav.home': 'HOME', 'nav.about': 'ABOUT', 'nav.exp': 'EXP',
-    'nav.edu': 'EDU', 'nav.certs': 'CERTS', 'nav.proj': 'PROJ',
-    'nav.skills': 'SKILLS', 'nav.contact': 'CONTACT',
-    // Hero
-    'hero.sys': '// SYSTEM BOOT — USER PROFILE LOADED //',
+    'nav.home': 'HOME', 'nav.about': 'ABOUT', 'nav.exp': 'EXP', 'nav.proj': 'PROJ',
+    'nav.skills': 'SKILLS', 'nav.edu': 'EDU', 'nav.contact': 'CONTACT',
+    'boot.1': 'loading user profile', 'boot.2': 'mounting homelab cluster', 'boot.3': 'starting portfolio.service',
     'hero.scroll': '▼ SCROLL ▼',
-    // Sections
-    'sec.about': 'ABOUT_ME.TXT', 'sec.exp': 'EXPERIENCE.LOG',
-    'sec.edu': 'EDUCATION.DIR', 'sec.certs': 'CERTIFICATIONS.DAT',
-    'sec.proj': 'PROJECTS.SH', 'sec.skills': 'SKILLS.INI', 'sec.contact': 'CONTACT.SH',
-    // About
+    'stat.tests': 'automated tests<br>in production SaaS', 'stat.nodes': 'node Proxmox<br>cluster', 'stat.agents': 'AI agent profiles<br>self-hosted',
+    'sec.about': 'ABOUT_ME.TXT', 'sec.exp': 'EXPERIENCE.LOG', 'sec.proj': 'PROJECTS.SH',
+    'sec.skills': 'SKILLS.INI', 'sec.edu': 'EDUCATION.DAT', 'sec.contact': 'CONTACT.SH',
     'about.cmd': 'cat profile.txt',
-    'about.p1': 'Network Operations Specialist with hands-on experience supporting Linux-based hosting, server, and network<br>infrastructure in a managed services environment.',
-    'about.p2': 'Experienced in <span class="ha">DNS</span>, <span class="ha">email delivery</span>, <span class="ha">server troubleshooting</span>, hosting platforms,<br><span class="ha">backups</span>, <span class="ha">virtualization</span>, and infrastructure monitoring.',
-    'about.p3': 'Build and operate personal infrastructure (<span class="hc">Proxmox, Docker, Kubernetes</span>) and full-stack projects,<br>working toward <span class="hp">cloud infrastructure, infrastructure as code, and platform engineering</span>.',
-    // Badges
-    'badge.active': '● ACTIVE', 'badge.done': '✓ COMPLETED',
-    // Experience
-    'exp.1.title': 'Network Operations Specialist',
-    'exp.1.co': '@ RackNation — San José, Costa Rica',
-    'exp.1.b1': 'Monitor Linux-based hosting, server, and network infrastructure for a managed services provider, supporting the availability of customer environments and hosted services.',
-    'exp.1.b2': 'Troubleshoot production incidents involving DNS, email delivery, connectivity, SSL/TLS, hosting services, and server-level issues using SSH, cPanel, BitNinja, Exim, Dovecot, and Acronis.',
-    'exp.1.b3': 'Investigate infrastructure incidents using service logs, DNS records, mail-flow analysis, network diagnostics, and system checks to identify root causes and appropriate remediation steps.',
-    'exp.1.b4': 'Document troubleshooting procedures, findings, and resolutions in the ticketing system and escalate complex incidents to engineering teams with relevant technical evidence.',
-    'exp.1.b5': 'Assist with bare-metal server assembly, rack mounting, hardware checks, system health monitoring, and routine datacenter operations.',
-    'exp.1.b6': 'Support backup and recovery operations and investigate failures affecting customer infrastructure.',
-    'exp.2.title': 'Affirm Support & Customer Service Agent',
-    'exp.2.co': '@ Bill Gosling Outsourcing — Heredia, Costa Rica',
-    'exp.2.b1': 'Provided Tier 1 technical and customer support for Affirm, resolving account access, payment, authentication, and transaction-related issues.',
-    'exp.2.b2': 'Diagnosed issues across mobile and web platforms through browser compatibility testing, device-specific reproduction, and structured troubleshooting.',
-    'exp.2.b3': 'Managed high volumes of concurrent interactions while maintaining consistent Salesforce CRM documentation, follow-up, and escalation quality.',
-    // Education
-    'edu.head': 'TYPE       INSTITUTION                                  DATE',
-    'edu.1.name': 'Fidélitas University', 'edu.1.sub': 'B.S. in Systems Engineering — Santa Marta, CR', 'edu.1.date': 'Jan 2023<br>→ PRESENT',
-    'edu.2.name': 'Colegio Victoria Bilingüe', 'edu.2.sub': 'Highschool Diploma in General Education — Tres Ríos, CR', 'edu.2.date': 'Jan 2010<br>→ Dec 2022',
-    // Certs
-    'cert.1.name': 'Web Development',
-    'cert.8.name': 'Network Defense',
-    'cert.9.name': 'Introduction to Networks',
-    // Projects
-    'proj.cmd': 'cat README.md', 'proj.title': 'Homelab — Infrastructure & Systems Lab',
-    'proj.type': 'SELF-HOSTED', 'proj.planned': '// SERVICES',
-    'spec.hw': 'HARDWARE: ', 'spec.net': 'NETWORK:  ', 'spec.hv': 'HYPERVISOR:',
-    'hl.pve': 'Proxmox VE · LXC containers', 'hl.pihole': 'Pi-hole · DNS & ad-blocking', 'hl.vault': 'Vaultwarden · Password manager', 'hl.forgejo': 'Forgejo · Git hosting', 'hl.mtx': 'MediaMTX · RTSP streaming', 'hl.maria': 'MariaDB · Database', 'hl.hermes': 'Hermes · Multi-agent AI (6 profiles)', 'hl.k3s': 'k3s · Kubernetes', 'hl.docker': 'Docker · Containers', 'hl.zfs': 'ZFS + NFS · Nightly vzdump backups', 'hl.ts': 'Tailscale · Mesh VPN + exit node', 'hl.gha': 'GitHub Actions · Automation',
-    'spec.iac': 'STORAGE:  ', 'spec.repo': 'REPO:     ',
-    'spec.k8s': 'ORCHESTR: ', 'spec.cicd': 'CI/CD:    ',
-    'proj3.cmd': 'cat README.md', 'proj3.title': 'Personal Portfolio Website',
-    'proj3.type': 'WEB APP', 'proj3.features': '// FEATURES',
-    'spec3.stack': 'STACK:    ', 'spec3.i18n': 'I18N:     ', 'spec3.theme': 'THEME:    ', 'spec3.deploy': 'DEPLOY:   ',
-    'svc3.glitch': 'Glitch & ASCII Rain', 'svc3.typewriter': 'Typewriter Effect',
-    'svc3.bilingual': 'Bilingual EN/ES', 'svc3.darkmode': 'Dark/Light Mode',
-    'proj2.cmd': 'cat README.md', 'proj2.title': 'TapGoCR — SaaS NFC & QR Platform',
-    'proj2.type': 'SaaS', 'proj2.features': '// FEATURES',
-    'spec2.stack': 'STACK:    ', 'spec2.cloud': 'UI/AUTH:  ', 'spec2.db': 'DB:       ', 'spec2.order': 'DEPLOY:   ',
-    'proj2.desc': 'Multi-tenant SaaS in production that connects NFC and QR tags to dynamic business landing pages, customer-managed links, and usage analytics. Includes an internal API that lets a team of AI agents (management, sales, operations, web studio) handle lead follow-up, quotes, orders, and email triage, with scoped per-agent keys, rate limiting, idempotent task intake, and an owner-approval gate on anything involving money, customers, manufacturing, or publishing. Deployed on shared hosting with automated backups and daily restore verification. Built with AI-assisted development.', 'svc2.cart': 'Multi-tenant SaaS', 'svc2.checkout': 'NFC / QR Tap Analytics', 'svc2.admin': 'AI Agent API · Scoped keys', 'svc2.rules': 'Owner Approval Queue', 'svc2.responsive': 'Spam scoring · Turnstile CAPTCHA', 'svc2.backups': 'Backups · Daily restore checks', 'svc2.tests': '385 Automated Tests',
-    // Skills filter
-    'filter.all': 'ALL', 'filter.support': 'SUPPORT', 'filter.infra': 'INFRA',
-    'filter.os': 'OS', 'filter.cloud': 'CLOUD', 'filter.code': 'CODE', 'filter.lang': 'LANGUAGES',
-    // Skill categories
-    'sk.support': 'TECHNICAL_SUPPORT', 'sk.infra': 'INFRASTRUCTURE_&_NETWORKING',
-    'sk.os': 'OPERATING_SYSTEMS', 'sk.cloud': 'CLOUD_&_DEVOPS',
-    'sk.code': 'PROGRAMMING', 'sk.lang': 'LANGUAGES',
-    // Skill tags
-    'tag.tier1': 'Tier 1 Troubleshooting', 'tag.noc': 'NOC Operations',
-    'tag.monitoring': 'Infrastructure Monitoring', 'tag.reproduction': 'Issue Reproduction',
-    'tag.escalation': 'Escalation Workflows', 'tag.custSupport': 'Customer-facing Support',
-    'tag.dns': 'DNS Troubleshooting', 'tag.connectivity': 'Connectivity Diagnostics',
-    'tag.serverMon': 'Server Monitoring', 'tag.backup': 'Backup & Recovery',
-    'tag.incident': 'Incident Response', 'tag.netdef': 'Network Defense',
-    'tag.sql': 'SQL (basic)', 'tag.english': 'English (C1)',
-    'tag.spanish': 'Spanish (native)', 'tag.cantonese': 'Cantonese (native)',
-    // Contact
-    'contact.cmd': './reach_out.sh',
-    'contact.line1': '// Initializing contact protocols...',
-    'contact.line2': '// All systems nominal. Ready for connection.',
-    'contact.loc': 'LOCATION',
-    'contact.lbl.name': 'name', 'contact.lbl.email': 'email', 'contact.lbl.msg': 'message',
-    'contact.ph.name': 'Your name', 'contact.ph.email': 'your@email.com', 'contact.ph.msg': 'Type your message...',
-    'contact.btn': '[ SEND_MESSAGE ]',
-    'contact.sending': '// Transmitting...',
-    'contact.ok': '// SUCCESS: Message queued. Will respond shortly.',
-    'contact.err.required': '// ERROR: All fields are required.',
-    'contact.err.email': '// ERROR: Invalid email address.',
-    // Typewriter
+    'about.p1': 'Network Operations Specialist supporting <span class="ha">Linux-based hosting, server and network infrastructure</span> in a managed services environment.',
+    'about.p2': 'Daily work across <span class="ha">DNS</span>, <span class="ha">email delivery</span>, <span class="ha">server troubleshooting</span>, <span class="ha">backups</span>, virtualization and monitoring.',
+    'about.p3': 'I also build and run my own infrastructure (<span class="hc">Proxmox, Docker, Kubernetes</span>) and ship full-stack products — heading toward <span class="hp">cloud infrastructure, infrastructure as code and platform engineering</span>.',
+    'badge.active': '● ACTIVE', 'badge.done': '✓ COMPLETED', 'badge.live': '● IN PRODUCTION',
+    'exp.1.title': 'Network Operations Specialist', 'exp.1.co': '@ RackNation — San José, Costa Rica',
+    'exp.1.b1': 'Monitor Linux-based hosting, server and network infrastructure for a managed services provider, keeping customer environments and hosted services available.',
+    'exp.1.b2': 'Troubleshoot production incidents across DNS, email delivery, connectivity, SSL/TLS and server-level issues using SSH, cPanel, BitNinja, Exim, Dovecot and Acronis.',
+    'exp.1.b3': 'Find root causes through service logs, DNS records, mail-flow analysis and network diagnostics; document resolutions and escalate complex cases to engineering with technical evidence.',
+    'exp.1.b4': 'Support backup and recovery, investigate backup failures, and assist with bare-metal assembly, rack mounting and routine datacenter operations.',
+    'exp.2.title': 'Affirm Support & Customer Service Agent', 'exp.2.co': '@ Bill Gosling Outsourcing — Heredia, Costa Rica',
+    'exp.2.b1': 'Tier 1 technical support for Affirm: account access, payments, authentication and transaction issues, diagnosed across mobile and web with browser and device reproduction.',
+    'exp.2.b2': 'Handled high volumes of concurrent interactions while keeping consistent Salesforce CRM documentation, follow-up and escalation quality.',
+    'proj.cmd': 'cat README.md',
+    'proj2.title': 'TapGoCR — SaaS NFC & QR Platform',
+    'proj2.b1': 'Multi-tenant SaaS in production connecting NFC and QR tags to dynamic business landing pages, customer-managed links and usage analytics.',
+    'proj2.b2': 'Internal API that lets a team of AI agents (management, sales, operations, web studio) run lead follow-up, quotes, orders and email triage — with scoped per-agent keys, rate limiting, idempotent task intake and an owner-approval gate on anything involving money, customers or publishing.',
+    'proj2.b3': 'Owner back office with batch-approval queue, quote-to-order tracking with required evidence at each stage, and agent health monitoring that alerts via Discord.',
+    'proj2.b4': 'Abuse protection with spam scoring and quarantine, Cloudflare Turnstile and a retention policy for stored emails.',
+    'proj2.b5': 'Rollback-safe queued deploys, schema migrations and automated backups with daily restore verification.',
+    'svc.tests': '385 automated tests',
+    'proj.title': 'Homelab — Infrastructure & Systems Lab', 'proj.type': 'SELF-HOSTED',
+    'hl.b1': '3-node Proxmox VE cluster on HP t610 thin clients and Debian Linux for hands-on virtualization, networking and storage.',
+    'hl.b2': 'LXC services: Pi-hole (DNS), Vaultwarden, Forgejo (git), MediaMTX (RTSP) and MariaDB.',
+    'hl.b3': 'Hermes: self-hosted multi-agent AI platform with six profiles (NOC, monitoring, development, research, job search, trading analysis) orchestrated via Telegram.',
+    'hl.b4': 'ZFS pool + NFS backup target with automated nightly vzdump snapshots and retention policies.',
+    'hl.b5': 'Tailscale mesh with exit node for secure remote administration; GitHub Actions for deployment automation.',
+    'sk.infra': 'LINUX_&_INFRASTRUCTURE', 'sk.net': 'NETWORKING_&_HOSTING', 'sk.store': 'STORAGE_&_BACKUP',
+    'sk.cont': 'CONTAINERS_&_MONITORING', 'sk.dev': 'DEVELOPMENT_&_AUTOMATION', 'sk.lang': 'LANGUAGES',
+    'tag.backup': 'Backup & recovery', 'tag.ai': 'AI-assisted development', 'tag.test': 'Functional testing',
+    'tag.english': 'English (C1)', 'tag.spanish': 'Spanish (native)', 'tag.cantonese': 'Cantonese (native)',
+    'edu.name': 'Fidélitas University', 'edu.sub': 'B.S. in Systems Engineering — Santa Marta, CR', 'edu.date': 'Jan 2023 → PRESENT',
+    'cert.1': 'Web Development', 'cert.2': 'Network Defense', 'cert.3': 'Introduction to Networks',
+    'contact.cmd': './reach_out.sh', 'contact.line1': '// All systems nominal. Ready for connection.',
+    'contact.cta': '[ SEND_EMAIL ]', 'contact.loc': 'LOCATION', 'foot': 'OPEN TO OPPORTUNITIES',
     'typer': ['Network Operations Specialist', 'Linux & Networking', 'Hosting & Infrastructure Support', 'Homelab & Automation'],
   },
   es: {
-    // Nav
-    'nav.home': 'INICIO', 'nav.about': 'SOBRE MÍ', 'nav.exp': 'EXP',
-    'nav.edu': 'EDU', 'nav.certs': 'CERTS', 'nav.proj': 'PROY',
-    'nav.skills': 'HABIL.', 'nav.contact': 'CONTACTO',
-    // Hero
-    'hero.sys': '// SISTEMA INICIADO — PERFIL DE USUARIO CARGADO //',
+    'nav.home': 'INICIO', 'nav.about': 'SOBRE MÍ', 'nav.exp': 'EXP', 'nav.proj': 'PROY',
+    'nav.skills': 'HABIL.', 'nav.edu': 'EDU', 'nav.contact': 'CONTACTO',
+    'boot.1': 'cargando perfil de usuario', 'boot.2': 'montando clúster homelab', 'boot.3': 'iniciando portfolio.service',
     'hero.scroll': '▼ SCROLL ▼',
-    // Sections
-    'sec.about': 'SOBRE_MI.TXT', 'sec.exp': 'EXPERIENCIA.LOG',
-    'sec.edu': 'EDUCACION.DIR', 'sec.certs': 'CERTIFICACIONES.DAT',
-    'sec.proj': 'PROYECTOS.SH', 'sec.skills': 'HABILIDADES.INI', 'sec.contact': 'CONTACTO.SH',
-    // About
+    'stat.tests': 'tests automatizados<br>en SaaS en producción', 'stat.nodes': 'nodos en clúster<br>Proxmox', 'stat.agents': 'perfiles de agentes IA<br>auto-alojados',
+    'sec.about': 'SOBRE_MI.TXT', 'sec.exp': 'EXPERIENCIA.LOG', 'sec.proj': 'PROYECTOS.SH',
+    'sec.skills': 'HABILIDADES.INI', 'sec.edu': 'EDUCACION.DAT', 'sec.contact': 'CONTACTO.SH',
     'about.cmd': 'cat perfil.txt',
-    'about.p1': 'Especialista en operaciones de red con experiencia práctica en soporte de infraestructura de hosting,<br>servidores y redes basada en Linux, en un entorno de servicios administrados.',
-    'about.p2': 'Con experiencia en <span class="ha">DNS</span>, <span class="ha">entrega de correo</span>, <span class="ha">diagnóstico de servidores</span>, plataformas de hosting,<br><span class="ha">backups</span>, <span class="ha">virtualización</span> y monitoreo de infraestructura.',
-    'about.p3': 'Construyo y opero infraestructura personal (<span class="hc">Proxmox, Docker, Kubernetes</span>) y proyectos full-stack,<br>con la meta de avanzar hacia <span class="hp">infraestructura cloud, infraestructura como código e ingeniería de plataformas</span>.',
-    // Badges
-    'badge.active': '● ACTIVO', 'badge.done': '✓ COMPLETADO',
-    // Experience
-    'exp.1.title': 'Especialista en Operaciones de Red',
-    'exp.1.co': '@ RackNation — San José, Costa Rica',
-    'exp.1.b1': 'Monitoreo de infraestructura de hosting, servidores y red basada en Linux para un proveedor de servicios administrados, apoyando la disponibilidad de los entornos y servicios alojados de clientes.',
-    'exp.1.b2': 'Diagnóstico de incidentes en producción de DNS, entrega de correo, conectividad, SSL/TLS, servicios de hosting y servidores usando SSH, cPanel, BitNinja, Exim, Dovecot y Acronis.',
-    'exp.1.b3': 'Investigación de incidentes de infraestructura mediante logs de servicios, registros DNS, análisis de flujo de correo, diagnósticos de red y revisiones del sistema para identificar causas raíz y pasos de remediación.',
-    'exp.1.b4': 'Documentación de procedimientos, hallazgos y resoluciones en el sistema de tickets y escalamiento de incidentes complejos a equipos de ingeniería con evidencia técnica relevante.',
-    'exp.1.b5': 'Apoyo en ensamblaje y montaje en rack de servidores bare-metal, revisiones de hardware, monitoreo de salud del sistema y operaciones rutinarias de datacenter.',
-    'exp.1.b6': 'Soporte en operaciones de backup y recuperación e investigación de fallos que afectan la infraestructura de clientes.',
-    'exp.2.title': 'Agente de Soporte y Servicio al Cliente (Affirm)',
-    'exp.2.co': '@ Bill Gosling Outsourcing — Heredia, Costa Rica',
-    'exp.2.b1': 'Soporte técnico y de servicio al cliente Tier 1 para Affirm, resolviendo problemas de acceso a cuentas, pagos, autenticación y transacciones.',
-    'exp.2.b2': 'Diagnóstico de problemas en plataformas móviles y web mediante pruebas de compatibilidad de navegadores, reproducción por dispositivo y resolución estructurada de problemas.',
-    'exp.2.b3': 'Gestión de altos volúmenes de interacciones simultáneas manteniendo documentación consistente en Salesforce CRM, seguimiento y calidad de escalamiento.',
-    // Education
-    'edu.head': 'TIPO       INSTITUCIÓN                                  FECHA',
-    'edu.1.name': 'Universidad Fidélitas', 'edu.1.sub': 'Ing. en Sistemas Computacionales — Santa Marta, CR', 'edu.1.date': 'Ene 2023<br>→ PRESENTE',
-    'edu.2.name': 'Colegio Victoria Bilingüe', 'edu.2.sub': 'Bachillerato en Educación General — Tres Ríos, CR', 'edu.2.date': 'Ene 2010<br>→ Dic 2022',
-    // Certs
-    'cert.1.name': 'Desarrollo Web',
-    'cert.8.name': 'Defensa de Redes',
-    'cert.9.name': 'Introducción a Redes',
-    // Projects
-    'proj.cmd': 'cat README.md', 'proj.title': 'Homelab — Laboratorio de Infraestructura y Sistemas',
-    'proj.type': 'AUTO-ALOJADO', 'proj.planned': '// SERVICIOS',
-    'spec.hw': 'HARDWARE: ', 'spec.net': 'RED:      ', 'spec.hv': 'HIPERVISOR:',
-    'hl.pve': 'Proxmox VE · Contenedores LXC', 'hl.pihole': 'Pi-hole · DNS y bloqueo de anuncios', 'hl.vault': 'Vaultwarden · Gestor de contraseñas', 'hl.forgejo': 'Forgejo · Alojamiento Git', 'hl.mtx': 'MediaMTX · Streaming RTSP', 'hl.maria': 'MariaDB · Base de datos', 'hl.hermes': 'Hermes · IA multi-agente (6 perfiles)', 'hl.k3s': 'k3s · Kubernetes', 'hl.docker': 'Docker · Contenedores', 'hl.zfs': 'ZFS + NFS · Backups vzdump nocturnos', 'hl.ts': 'Tailscale · VPN mesh + exit node', 'hl.gha': 'GitHub Actions · Automatización',
-    'spec.iac': 'ALMACEN.: ', 'spec.repo': 'REPO:     ',
-    'spec.k8s': 'ORQUESTR: ', 'spec.cicd': 'CI/CD:    ',
-    'proj3.cmd': 'cat README.md', 'proj3.title': 'Portafolio Personal',
-    'proj3.type': 'APP WEB', 'proj3.features': '// FUNCIONALIDADES',
-    'spec3.stack': 'STACK:    ', 'spec3.i18n': 'I18N:     ', 'spec3.theme': 'TEMA:     ', 'spec3.deploy': 'DEPLOY:   ',
-    'svc3.glitch': 'Glitch y Lluvia ASCII', 'svc3.typewriter': 'Efecto Máquina de Escribir',
-    'svc3.bilingual': 'Bilingüe ES/EN', 'svc3.darkmode': 'Modo Oscuro/Claro',
-    'proj2.cmd': 'cat README.md', 'proj2.title': 'TapGoCR — Plataforma SaaS NFC y QR',
-    'proj2.type': 'SaaS', 'proj2.features': '// FUNCIONALIDADES',
-    'spec2.stack': 'STACK:    ', 'spec2.cloud': 'UI/AUTH:  ', 'spec2.db': 'BD:       ', 'spec2.order': 'DEPLOY:   ',
-    'proj2.desc': 'SaaS multi-tenant en producción que conecta etiquetas NFC y QR con páginas de aterrizaje dinámicas, enlaces administrados por el cliente y analítica de uso. Incluye una API interna que permite a un equipo de agentes de IA (gestión, ventas, operaciones, estudio web) manejar seguimiento de leads, cotizaciones, pedidos y triage de correo, con llaves por agente, rate limiting, ingreso idempotente de tareas y una aprobación del dueño para todo lo que involucre dinero, clientes, manufactura o publicación. Desplegado en hosting compartido con backups automáticos y verificación diaria de restauración. Desarrollado con asistencia de IA.', 'svc2.cart': 'SaaS Multi-tenant', 'svc2.checkout': 'Analítica de Taps NFC / QR', 'svc2.admin': 'API para Agentes IA · Llaves por agente', 'svc2.rules': 'Cola de Aprobación del Dueño', 'svc2.responsive': 'Detección de spam · Turnstile CAPTCHA', 'svc2.backups': 'Backups · Verificación diaria de restauración', 'svc2.tests': '385 Tests Automatizados',
-    // Skills filter
-    'filter.all': 'TODO', 'filter.support': 'SOPORTE', 'filter.infra': 'INFRA',
-    'filter.os': 'OS', 'filter.cloud': 'CLOUD', 'filter.code': 'CÓDIGO', 'filter.lang': 'IDIOMAS',
-    // Skill categories
-    'sk.support': 'SOPORTE_TÉCNICO', 'sk.infra': 'INFRAESTRUCTURA_Y_REDES',
-    'sk.os': 'SISTEMAS_OPERATIVOS', 'sk.cloud': 'CLOUD_Y_DEVOPS',
-    'sk.code': 'PROGRAMACIÓN', 'sk.lang': 'IDIOMAS',
-    // Skill tags
-    'tag.tier1': 'Soporte Tier 1', 'tag.noc': 'Operaciones NOC',
-    'tag.monitoring': 'Monitoreo de Infraestructura', 'tag.reproduction': 'Reproducción de Errores',
-    'tag.escalation': 'Flujos de Escalación', 'tag.custSupport': 'Soporte al Cliente',
-    'tag.dns': 'Diagnóstico DNS', 'tag.connectivity': 'Diagnóstico de Conectividad',
-    'tag.serverMon': 'Monitoreo de Servidores', 'tag.backup': 'Backup y Recuperación',
-    'tag.incident': 'Respuesta a Incidentes', 'tag.netdef': 'Defensa de Redes',
-    'tag.sql': 'SQL (básico)', 'tag.english': 'Inglés (C1)',
-    'tag.spanish': 'Español (nativo)', 'tag.cantonese': 'Cantonés (nativo)',
-    // Contact
-    'contact.cmd': './contactar.sh',
-    'contact.line1': '// Inicializando protocolos de contacto...',
-    'contact.line2': '// Todos los sistemas nominales. Listo para conectar.',
-    'contact.loc': 'UBICACIÓN',
-    'contact.lbl.name': 'nombre', 'contact.lbl.email': 'correo', 'contact.lbl.msg': 'mensaje',
-    'contact.ph.name': 'Tu nombre', 'contact.ph.email': 'tu@correo.com', 'contact.ph.msg': 'Escribe tu mensaje...',
-    'contact.btn': '[ ENVIAR_MENSAJE ]',
-    'contact.sending': '// Transmitiendo...',
-    'contact.ok': '// ÉXITO: Mensaje en cola. Responderé pronto.',
-    'contact.err.required': '// ERROR: Todos los campos son requeridos.',
-    'contact.err.email': '// ERROR: Correo electrónico inválido.',
-    // Typewriter
+    'about.p1': 'Especialista en operaciones de red que da soporte a <span class="ha">infraestructura de hosting, servidores y redes basada en Linux</span> en un entorno de servicios administrados.',
+    'about.p2': 'Trabajo diario en <span class="ha">DNS</span>, <span class="ha">entrega de correo</span>, <span class="ha">diagnóstico de servidores</span>, <span class="ha">backups</span>, virtualización y monitoreo.',
+    'about.p3': 'También construyo y opero mi propia infraestructura (<span class="hc">Proxmox, Docker, Kubernetes</span>) y lanzo productos full-stack — rumbo a <span class="hp">infraestructura cloud, infraestructura como código e ingeniería de plataformas</span>.',
+    'badge.active': '● ACTIVO', 'badge.done': '✓ COMPLETADO', 'badge.live': '● EN PRODUCCIÓN',
+    'exp.1.title': 'Especialista en Operaciones de Red', 'exp.1.co': '@ RackNation — San José, Costa Rica',
+    'exp.1.b1': 'Monitoreo de infraestructura de hosting, servidores y red basada en Linux para un proveedor de servicios administrados, manteniendo disponibles los entornos y servicios de los clientes.',
+    'exp.1.b2': 'Diagnóstico de incidentes en producción de DNS, entrega de correo, conectividad, SSL/TLS y servidores con SSH, cPanel, BitNinja, Exim, Dovecot y Acronis.',
+    'exp.1.b3': 'Identificación de causas raíz mediante logs, registros DNS, análisis de flujo de correo y diagnósticos de red; documentación de resoluciones y escalamiento a ingeniería con evidencia técnica.',
+    'exp.1.b4': 'Soporte en backup y recuperación, investigación de fallos de backup y apoyo en ensamblaje bare-metal, montaje en rack y operaciones de datacenter.',
+    'exp.2.title': 'Agente de Soporte y Servicio al Cliente (Affirm)', 'exp.2.co': '@ Bill Gosling Outsourcing — Heredia, Costa Rica',
+    'exp.2.b1': 'Soporte técnico Tier 1 para Affirm: acceso a cuentas, pagos, autenticación y transacciones, diagnosticados en móvil y web con reproducción por navegador y dispositivo.',
+    'exp.2.b2': 'Gestión de altos volúmenes de interacciones simultáneas con documentación consistente en Salesforce CRM, seguimiento y calidad de escalamiento.',
+    'proj.cmd': 'cat README.md',
+    'proj2.title': 'TapGoCR — Plataforma SaaS NFC y QR',
+    'proj2.b1': 'SaaS multi-tenant en producción que conecta etiquetas NFC y QR con páginas de aterrizaje dinámicas, enlaces administrados por el cliente y analítica de uso.',
+    'proj2.b2': 'API interna que permite a un equipo de agentes IA (gestión, ventas, operaciones, estudio web) manejar seguimiento de leads, cotizaciones, pedidos y triage de correo — con llaves por agente, rate limiting, ingreso idempotente y aprobación del dueño para todo lo que involucre dinero, clientes o publicación.',
+    'proj2.b3': 'Back office del dueño con cola de aprobación por lotes, seguimiento de cotización a pedido con evidencia obligatoria en cada etapa y monitoreo de salud de agentes con alertas por Discord.',
+    'proj2.b4': 'Protección contra abuso con detección de spam y cuarentena, Cloudflare Turnstile y política de retención de correos.',
+    'proj2.b5': 'Despliegues en cola con rollback seguro, migraciones de esquema y backups automáticos con verificación diaria de restauración.',
+    'svc.tests': '385 tests automatizados',
+    'proj.title': 'Homelab — Laboratorio de Infraestructura y Sistemas', 'proj.type': 'AUTO-ALOJADO',
+    'hl.b1': 'Clúster Proxmox VE de 3 nodos sobre thin clients HP t610 y Debian Linux para práctica real de virtualización, redes y almacenamiento.',
+    'hl.b2': 'Servicios LXC: Pi-hole (DNS), Vaultwarden, Forgejo (git), MediaMTX (RTSP) y MariaDB.',
+    'hl.b3': 'Hermes: plataforma de IA multi-agente auto-alojada con seis perfiles (NOC, monitoreo, desarrollo, investigación, búsqueda de empleo, análisis de trading) orquestada vía Telegram.',
+    'hl.b4': 'Pool ZFS + destino de backup NFS con snapshots vzdump nocturnos automáticos y políticas de retención.',
+    'hl.b5': 'Malla Tailscale con exit node para administración remota segura; GitHub Actions para automatizar despliegues.',
+    'sk.infra': 'LINUX_E_INFRAESTRUCTURA', 'sk.net': 'REDES_Y_HOSTING', 'sk.store': 'ALMACENAMIENTO_Y_BACKUP',
+    'sk.cont': 'CONTENEDORES_Y_MONITOREO', 'sk.dev': 'DESARROLLO_Y_AUTOMATIZACIÓN', 'sk.lang': 'IDIOMAS',
+    'tag.backup': 'Backup y recuperación', 'tag.ai': 'Desarrollo asistido por IA', 'tag.test': 'Pruebas funcionales',
+    'tag.english': 'Inglés (C1)', 'tag.spanish': 'Español (nativo)', 'tag.cantonese': 'Cantonés (nativo)',
+    'edu.name': 'Universidad Fidélitas', 'edu.sub': 'Ing. en Sistemas Computacionales — Santa Marta, CR', 'edu.date': 'Ene 2023 → PRESENTE',
+    'cert.1': 'Desarrollo Web', 'cert.2': 'Defensa de Redes', 'cert.3': 'Introducción a Redes',
+    'contact.cmd': './contactar.sh', 'contact.line1': '// Todos los sistemas nominales. Listo para conectar.',
+    'contact.cta': '[ ENVIAR_CORREO ]', 'contact.loc': 'UBICACIÓN', 'foot': 'DISPONIBLE PARA NUEVAS OPORTUNIDADES',
     'typer': ['Especialista en Operaciones de Red', 'Linux y Redes', 'Soporte de Hosting e Infraestructura', 'Homelab y Automatización'],
-  }
+  },
 };
 
-(function lang() {
-  const btn  = document.getElementById('lang-btn');
-  let current = localStorage.getItem('lang') || 'en';
+let currentLang = store.get('lang', 'en');
+if (!t[currentLang]) currentLang = 'en';
 
-  const applyLang = l => {
-    current = l;
+(function lang() {
+  const btn = document.getElementById('lang-btn');
+  const apply = l => {
+    currentLang = l;
     document.documentElement.lang = l;
     btn.classList.toggle('active', l === 'es');
     const tr = t[l];
-
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const v = tr[el.dataset.i18n];
-      if (v !== undefined) el.textContent = v;
+      if (v === undefined) return;
+      if (v.includes('<')) el.innerHTML = v; else el.textContent = v;
     });
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const v = tr[el.dataset.i18nHtml];
       if (v !== undefined) el.innerHTML = v;
     });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const v = tr[el.dataset.i18nPlaceholder];
-      if (v !== undefined) el.placeholder = v;
-    });
   };
-
-  applyLang(current);
-
+  apply(currentLang);
   btn.addEventListener('click', () => {
-    const next = current === 'en' ? 'es' : 'en';
-    applyLang(next);
-    localStorage.setItem('lang', next);
+    const next = currentLang === 'en' ? 'es' : 'en';
+    apply(next);
+    store.set('lang', next);
   });
 })();
 
-/* ── ASCII BACKGROUND ──────────────────────────────── */
-(function asciiRain() {
-  const el = document.getElementById('ascii-rain');
-  if (!el) return;
-  const chars = '01░▒▓█▄▀■□┌┐└┘├┤┬┴┼─│╔╗╚╝◆◇○●';
-  const cols = Math.ceil(window.innerWidth / 9);
-  const rows = Math.ceil(window.innerHeight / 15);
-  let t = '';
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++)
-      t += Math.random() > .89 ? chars[Math.floor(Math.random() * chars.length)] : ' ';
-    t += '\n';
-  }
-  el.textContent = t;
+/* ── THEME ────────────────────────────────────────────── */
+(function theme() {
+  const h = document.documentElement, btn = document.getElementById('theme-btn');
+  const apply = th => { h.dataset.theme = th; btn.textContent = th === 'light' ? '◑ MODE' : '◐ MODE'; };
+  apply(store.get('theme', 'dark'));
+  btn.addEventListener('click', () => {
+    const next = h.dataset.theme === 'light' ? 'dark' : 'light';
+    apply(next); store.set('theme', next);
+  });
 })();
 
-/* ── TYPEWRITER ────────────────────────────────────── */
-(function typer() {
-  let pi = 0, ci = 0, del = false;
-  const el = document.getElementById('typer');
-  const phrases = () => t[localStorage.getItem('lang') || 'en'].typer;
-  function tick() {
-    const p = phrases()[pi % phrases().length];
-    if (!del) {
-      el.textContent = p.slice(0, ++ci);
-      if (ci === p.length) { del = true; setTimeout(tick, 1800); return; }
-    } else {
-      el.textContent = p.slice(0, --ci);
-      if (ci === 0) { del = false; pi = (pi + 1) % phrases().length; }
-    }
-    setTimeout(tick, del ? 38 : 68);
-  }
-  setTimeout(tick, 700);
-})();
-
-/* ── INTERSECTION OBSERVER (reveal + certs) ────────── */
-(function observe() {
-  const revObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
-    });
-  }, { threshold: .1 });
-
-  const certObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('loaded'), 200);
-        certObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: .3 });
-
-  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-  document.querySelectorAll('.cert-card').forEach(el => certObs.observe(el));
-})();
-
-/* ── ACTIVE NAV ────────────────────────────────────── */
-(function activeNav() {
-  const ids = ['hero', 'about', 'experience', 'education', 'certs', 'projects', 'skills', 'contact'];
-  const links = document.querySelectorAll('.nav-links a');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const id = e.target.id;
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
-      }
-    });
-  }, { threshold: .35 });
-  ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
-})();
-
-/* ── SKILLS FILTER ─────────────────────────────────── */
-(function skillFilter() {
-  const btns = document.querySelectorAll('.fbtn');
-  const cats = document.querySelectorAll('.sk-cat');
-
-  const apply = cat => {
-    btns.forEach(b => b.classList.toggle('on', b.dataset.cat === cat));
-    cats.forEach(c => c.classList.toggle('hide', cat !== 'all' && c.dataset.cat !== cat));
-  };
-
-  const saved = localStorage.getItem('skillFilter');
-  apply([...btns].some(b => b.dataset.cat === saved) ? saved : 'all');
-
-  btns.forEach(btn => btn.addEventListener('click', () => {
-    const cat = btn.dataset.cat;
-    apply(cat);
-    localStorage.setItem('skillFilter', cat);
+/* ── HAMBURGER ────────────────────────────────────────── */
+(function hamburger() {
+  const btn = document.getElementById('nav-hamburger'), links = document.getElementById('nav-links');
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.textContent = open ? '✕ CLOSE' : '☰ MENU';
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); btn.textContent = '☰ MENU';
   }));
 })();
 
-/* ── SCROLL POSITION ──────────────────────────────── */
-(function scrollPos() {
-  if (!location.hash) {
-    const saved = localStorage.getItem('scrollY');
-    if (saved) window.scrollTo(0, parseInt(saved, 10));
+/* ── CLOCK ────────────────────────────────────────────── */
+(function clock() {
+  const el = document.getElementById('clock'), p = x => String(x).padStart(2, '0');
+  const tick = () => { const n = new Date(); el.textContent = `${p(n.getHours())}:${p(n.getMinutes())}:${p(n.getSeconds())}`; };
+  tick(); setInterval(tick, 1000);
+})();
+
+/* ── MATRIX RAIN (canvas, paused offscreen) ───────────── */
+(function rain() {
+  const cv = document.getElementById('rain');
+  if (!cv || reduceMotion) return;
+  const ctx = cv.getContext('2d');
+  const hero = document.getElementById('hero');
+  const chars = '01░▒▓█▄▀■□┌┐└┘├┤┬┴┼─│◆◇○●';
+  const size = 14;
+  let cols, drops, w, h, visible = true, last = 0;
+
+  const color = () => getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() || '#00ff41';
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = hero.clientWidth; h = hero.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / size);
+    drops = Array.from({ length: cols }, () => Math.random() * -h / size);
+    ctx.clearRect(0, 0, w, h);
+  }
+  function frame(ts) {
+    requestAnimationFrame(frame);
+    if (!visible || ts - last < 55) return;       // ~18fps: subtle, cheap
+    last = ts;
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0,0,0,.14)';            // fade trails
+    ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.font = `${size - 2}px "Share Tech Mono", monospace`;
+    ctx.fillStyle = color();
+    ctx.globalAlpha = document.documentElement.dataset.theme === 'light' ? .16 : .13;
+    for (let i = 0; i < cols; i++) {
+      if (drops[i] > 0) ctx.fillText(chars[(Math.random() * chars.length) | 0], i * size, drops[i] * size);
+      if (drops[i] * size > h && Math.random() > .975) drops[i] = Math.random() * -20;
+      drops[i] += .6 + (i % 5) * .08;
+    }
+    ctx.globalAlpha = 1;
+  }
+  resize();
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 200); });
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(hero);
+  requestAnimationFrame(frame);
+})();
+
+/* ── NAME SCRAMBLE + TYPEWRITER ───────────────────────── */
+(function heroText() {
+  const name = document.getElementById('hero-name');
+  const final = name.dataset.text;
+  if (!reduceMotion) {
+    const glyphs = '01#$%&@*+=<>/\\░▒▓';
+    const start = performance.now() + 500, dur = 1100;
+    name.classList.add('scrambling');
+    name.textContent = ' '.repeat(final.length);
+    (function step(now) {
+      const p = Math.min(Math.max((now - start) / dur, 0), 1);
+      const reveal = Math.floor(p * final.length);
+      let s = '';
+      for (let i = 0; i < final.length; i++)
+        s += final[i] === ' ' ? ' ' : (now < start ? ' ' : i < reveal ? final[i] : glyphs[(Math.random() * glyphs.length) | 0]);
+      name.textContent = s;
+      if (p < 1) requestAnimationFrame(step);
+      else { name.textContent = final; name.classList.remove('scrambling'); }
+    })(performance.now());
   }
 
-  let timer;
-  window.addEventListener('scroll', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => localStorage.setItem('scrollY', window.scrollY), 150);
+  const el = document.getElementById('typer');
+  const phrases = () => t[currentLang].typer;
+  if (reduceMotion) { el.textContent = phrases()[0]; return; }
+  let pi = 0, ci = 0, del = false;
+  (function tick() {
+    const list = phrases(), p = list[pi % list.length];
+    if (!del) {
+      el.textContent = p.slice(0, ++ci);
+      if (ci >= p.length) { del = true; setTimeout(tick, 1800); return; }
+    } else {
+      el.textContent = p.slice(0, --ci);
+      if (ci <= 0) { del = false; pi = (pi + 1) % list.length; }
+    }
+    setTimeout(tick, del ? 34 : 64);
+  })();
+})();
+
+/* ── COUNT-UP STATS ───────────────────────────────────── */
+(function counters() {
+  const nums = document.querySelectorAll('[data-count]');
+  const easeOut = x => 1 - Math.pow(1 - x, 4);
+  nums.forEach(el => {
+    const target = +el.dataset.count;
+    if (reduceMotion) { el.textContent = target; return; }
+    const delay = 1300, dur = 1400, t0 = performance.now() + delay;
+    (function step(now) {
+      const p = Math.min(Math.max((now - t0) / dur, 0), 1);
+      el.textContent = Math.round(easeOut(p) * target);
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  });
+})();
+
+/* ── REVEAL / STAGGER / SCROLL-SPY ────────────────────── */
+(function observe() {
+  document.querySelectorAll('[data-stagger]').forEach(g =>
+    [...g.children].forEach((c, i) => c.style.setProperty('--i', i)));
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, [data-stagger]').forEach(el => io.observe(el));
+
+  const ids = ['hero', 'about', 'experience', 'projects', 'skills', 'education', 'contact'];
+  const links = document.querySelectorAll('.nav-links a');
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  ids.forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+})();
+
+/* ── SCROLL PROGRESS ──────────────────────────────────── */
+(function progress() {
+  const bar = document.getElementById('progress');
+  let ticking = false;
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
+
+/* ── CURSOR SPOTLIGHT ─────────────────────────────────── */
+(function spotlight() {
+  if (!finePointer || reduceMotion) return;
+  document.addEventListener('pointermove', e => {
+    const el = e.target.closest && e.target.closest('.spot');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
   }, { passive: true });
 })();
 
-/* ── RANDOM GLITCH ─────────────────────────────────── */
-(function randomGlitch() {
-  const overlay = document.getElementById('glitch-overlay');
-  const heads   = document.querySelectorAll('.sec-head');
-
-  function trigger() {
-    // Screen-wide color flash
-    overlay.classList.remove('active');
-    void overlay.offsetWidth;
-    overlay.classList.add('active');
-
-    // Glitch a random visible section header
-    const visible = [...heads].filter(h => {
+/* ── HEADING GLITCH (subtle, visible headers only) ────── */
+(function headGlitch() {
+  if (reduceMotion) return;
+  const heads = document.querySelectorAll('.sec-head');
+  (function trigger() {
+    const vis = [...heads].filter(h => {
       const r = h.getBoundingClientRect();
-      return r.top < window.innerHeight && r.bottom > 0;
+      return r.top > 40 && r.bottom < window.innerHeight && h.closest('.reveal.in');
     });
-    if (visible.length) {
-      const h = visible[Math.floor(Math.random() * visible.length)];
+    if (vis.length) {
+      const h = vis[(Math.random() * vis.length) | 0];
       h.classList.add('glitching');
       setTimeout(() => h.classList.remove('glitching'), 400);
     }
-
-    setTimeout(trigger, 5000 + Math.random() * 9000);
-  }
-
-  setTimeout(trigger, 3000 + Math.random() * 4000);
-})();
-
-/* ── CONTACT FORM ──────────────────────────────────── */
-(function contactForm() {
-  const form = document.getElementById('cform');
-  const msg  = document.getElementById('fmsg');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name       = document.getElementById('fn').value.trim();
-    const email      = document.getElementById('fe').value.trim();
-    const text       = document.getElementById('fm').value.trim();
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    const tr = t[localStorage.getItem('lang') || 'en'];
-    if (!name || !email || !text) {
-      msg.className = 'fmsg err';
-      msg.textContent = tr['contact.err.required'];
-      return;
-    }
-    if (!validEmail) {
-      msg.className = 'fmsg err';
-      msg.textContent = tr['contact.err.email'];
-      return;
-    }
-    msg.className = 'fmsg';
-    msg.textContent = tr['contact.sending'];
-    setTimeout(() => {
-      msg.className = 'fmsg ok';
-      msg.textContent = tr['contact.ok'];
-      form.reset();
-    }, 900);
-  });
+    setTimeout(trigger, 6000 + Math.random() * 8000);
+  })();
 })();
